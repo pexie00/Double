@@ -43,16 +43,16 @@ NO_RESULTS_MSG = is_enabled((environ.get("NO_RESULTS_MSG", 'True')), False)
 
 # MongoDB information
 DATABASE_URI = environ.get('DATABASE_URI', "")
-DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
+DATABASE_NAME = environ.get('DATABASE_NAME', "cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 #this shortlink working
 IMPORT_JK_SITE = environ.get('IMPORT_JK_SITE', 'ziplinker.net')
 IMPORT_JK_API = environ.get('IMPORT_JK_API', 'c992d5c6d3a74f6ceccbf9bc34aa27c8487c11d2')
-IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), False)
+IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'True')), True)
 
 # Others
-IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'False')), False)
+IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'True')), True)
 HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/c/1845700490/3")
 VERIFY2_URL = environ.get('VERIFY2_URL', "ziplinker.net")
 VERIFY2_API = environ.get('VERIFY2_API', "e45148e36c775f7602b27f6036bcd96a750db1c8")
@@ -70,7 +70,7 @@ GRP_LNK = environ.get('GRP_LNK', 'https://t.me/DigitalSearchMovie')
 CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/DigitalSearchMovie')
 MSG_ALRT = environ.get('MSG_ALRT', 'Wʜᴀᴛ Aʀᴇ Yᴏᴜ Lᴏᴏᴋɪɴɢ Aᴛ ?')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', -1001902255762))
-SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'Apnamovie4')
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '0')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
 AUTO_FFILTER = is_enabled((environ.get('AUTO_FFILTER', "True")), True)

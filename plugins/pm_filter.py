@@ -1667,13 +1667,13 @@ async def auto_filter(client, msg, spoll=False):
         ]
         
     btn.insert(0, [
-        InlineKeyboardButton("Lᴀɴɢᴜᴀɢᴇs", callback_data=f"select_lang#{message.from_user.id}"),
-        InlineKeyboardButton("Qᴜᴀʟɪᴛʏꜱ", callback_data=f"lusi_films#{message.from_user.id}"),
-        InlineKeyboardButton("Sᴇᴀꜱᴏɴꜱ", callback_data=f"jk_dev#{message.from_user.id}")
+        InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇꜱ", callback_data=f"select_lang#{message.from_user.id}"),
+        InlineKeyboardButton("Qᴜᴀʟɪᴛɪᴇꜱ", callback_data=f"lusi_films#{message.from_user.id}"),
+        InlineKeyboardButton("ꜱᴇᴀꜱᴏɴꜱ", callback_data=f"jk_dev#{message.from_user.id}")
     ])
 
     btn.insert(0, [
-        InlineKeyboardButton("𝗦𝗲𝗻𝗱 𝗔𝗹𝗹 𝗙𝗶𝗹𝗹𝗲𝘀", callback_data=f"send_fall#{pre}#{0}#{message.from_user.id}"),
+        InlineKeyboardButton("𝗦𝗲𝗻𝗱 𝗔𝗹𝗹 𝗙𝗶𝗹𝗲𝘀", callback_data=f"send_fall#{pre}#{0}#{message.from_user.id}"),
     ])
 
     if offset != "":
@@ -1734,7 +1734,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = "<b>ʜᴇʀᴇ ɪꜱ ᴡʜᴀᴛ ɪ ꜰᴏᴜɴᴅ ꜰᴏʀ ʏᴏᴜʀ Qᴜᴇʀʏ ♻️🚀 {search}.</b>"
+        cap = "<b>ʜᴇʀᴇ ɪꜱ ᴡʜᴀᴛ ɪ ꜰᴏᴜɴᴅ ꜰᴏʀ ʏᴏᴜʀ Qᴜᴇʀʏ ♻️</b>"
     CAP[search] = cap
     if imdb and imdb.get('poster'):
         try:

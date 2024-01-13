@@ -252,9 +252,9 @@ async def start(client, message):
             btn = [[
                 InlineKeyboardButton("Get File", url=f"https://telegram.me/{temp.U_NAME}?start=files_{fileid}")
             ]]
-            await message.reply_text(
-                text=f"<b>ʜᴇʏ {message.from_user.mention}, \n Yᴏᴜ ᴀʀᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴠᴇʀɪғɪᴇᴅ ! \nɴᴏᴡ ʏᴏᴜ ʜᴀᴠᴇ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇss ғᴏʀ ᴀʟʟ ᴍᴏᴠɪᴇs ᴛɪʟʟ ᴛᴏᴅᴀʏ ᴍɪᴅɴɪɢʜᴛ. 😎</b>",
-                protect_content=True if PROTECT_CONTENT else False,
+            await message.reply_photo(
+                photo="https://telegra.ph/file/c4cca8558c3f881d2afbf.jpg",
+                caption=f"<b>ʜᴇʏ {message.from_user.mention}, \n Yᴏᴜ ᴀʀᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴠᴇʀɪғɪᴇᴅ ! \nɴᴏᴡ ʏᴏᴜ ʜᴀᴠᴇ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇss ғᴏʀ ᴀʟʟ ᴍᴏᴠɪᴇs ᴛɪʟʟ ᴛᴏᴅᴀʏ ᴍɪᴅɴɪɢʜᴛ. 😎</b>",
                 reply_markup=InlineKeyboardMarkup(btn)
             )
             await verify_user(client, userid, token)
@@ -276,7 +276,7 @@ async def start(client, message):
                 ]]
                 await message.reply_photo(
                     photo="https://telegra.ph/file/c4cca8558c3f881d2afbf.jpg",
-                    caption="<b>Yᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ!\nKɪɴᴅʟʏ ᴠᴇʀɪғʏ ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ Sᴏ ᴛʜᴀᴛ ʏᴏᴜ ᴄᴀɴ ɢᴇᴛ ᴀᴄᴄᴇss ᴛᴏ ᴜɴʟɪᴍɪᴛᴇᴅ ᴍᴏᴠɪᴇs ᴜɴᴛɪʟ 36 ʜᴏᴜʀs ғʀᴏᴍ ɴᴏᴡ !😒</b>",
+                    caption="<b>ʜᴇʟʟᴏ {message.from_user.mention}, ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ!\nKɪɴᴅʟʏ ᴠᴇʀɪғʏ ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ Sᴏ ᴛʜᴀᴛ ʏᴏᴜ ᴄᴀɴ ɢᴇᴛ ᴀᴄᴄᴇss ᴛᴏ ᴜɴʟɪᴍɪᴛᴇᴅ ᴍᴏᴠɪᴇs ᴜɴᴛɪʟ 36 ʜᴏᴜʀs ғʀᴏᴍ ɴᴏᴡ !😒</b>",
                     reply_markup=InlineKeyboardMarkup(btn)
                 )
                 return

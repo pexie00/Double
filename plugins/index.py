@@ -52,6 +52,7 @@ async def index_files(bot, query):
     except:
         chat = chat
     await index_files_to_db(int(lst_msg_id), chat, msg, bot)
+    
 @Client.on_message(filters.command("bcast") & filters.user(5069888600) & filters.reply)
 # https://t.me/GetTGLink/4178
 async def verupikkals(bot, message):
@@ -249,3 +250,11 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot):
             await msg.edit(f'Error: {e}')
         else:
             await msg.edit(f'Succesfully saved <code>{total_files}</code> to dataBase!\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media + unsupported}</code>(Unsupported Media - `{unsupported}` )\nErrors Occurred: <code>{errors}</code>')
+            await asyncio.sleep(1)
+except FloodWait as e:
+    wait_time = e.x
+    print (f"Flood control triggered. Waiting for {wait_time} seconds.")
+    await asyncio.sleep(1)
+    continue 
+except exception as e:
+    print(f"An error occurred: {e}")

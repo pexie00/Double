@@ -20,6 +20,7 @@ from database.users_chats_db import db
 from bs4 import BeautifulSoup
 import requests
 import aiohttp
+from shortzy import Shortzy
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -38,6 +39,7 @@ START_CHAR = ('\'', '"', SMART_OPEN)
 
 # temp db for banned 
 class temp(object):
+    START_TIME = 0
     BANNED_USERS = []
     BANNED_CHATS = []
     ME = None

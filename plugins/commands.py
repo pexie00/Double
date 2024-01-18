@@ -391,39 +391,24 @@ async def log_file(bot, message):
     except Exception as e:
         await message.reply(str(e))
 
-@Client.on_message(filters.command('get_custom_settings'))
-async def get_custom_settings(client, message):
+@Client.on_message(filters.command('set_welcome'))
+async def save_welcome(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
         return await message.reply("<b>You are Anonymous admin you can't use this command !</b>")
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("Use this command in group.")
+        return await message.reply_text("Use this command in group.")      
     grp_id = message.chat.id
     title = message.chat.title
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('You not admin in this group...')    
-    settings = await get_settings(grp_id)
-    text = f"""Custom settings for: {title}
-
-Shortlink URL: {settings["url"]}
-Shortlink API: {settings["api"]}
-
-IMDb Template: {settings['template']}
-
-File Caption: {settings['caption']}
-
-Welcome Text: {settings['welcome_text']}
-
-Tutorial Link: {settings['tutorial']}
-
-Force Channels: {str(settings['fsub'])[1:-1] if settings['fsub'] else 'Not Set'}"""
-
-    btn = [[
-        InlineKeyboardButton(text="Close", callback_data="close_data")
-    ]]
-    await message.reply_text(text, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
-    
+        return await message.reply_text('You not admin in this group.')
+    try:
+        welcome = message.text.split(" ", 1)[1]
+    except:
+        return await message.reply_text("Command Incomplete!")    
+    await save_group_settings(grp_id, 'welcome_text', welcome)
+    await message.reply_text(f"Successfully changed welcome for {title} to\n\n{welcome}")
 
 @Client.on_message(filters.command('delete') & filters.user(ADMINS))
 async def delete(bot, message):

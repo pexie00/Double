@@ -98,7 +98,8 @@ Cᴏᴍᴍᴀɴᴅs Aɴᴅ Usᴀɢᴇ:
 👤 Total Users: <code>{}</code>
 👥 Total Chats: <code>{}</code>
 ✨ Used Storage: <code>{}</code>
-🗳 Free Storage: <code>{}</code>"""
+🗳 Free Storage: <code>{}</code>
+🚀 Bot Uptime: <code>{}</code>"""
 
     LOG_TEXT_G = """#NewGroup
 Gʀᴏᴜᴘ = {}(<code>{}</code>)

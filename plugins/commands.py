@@ -382,6 +382,39 @@ async def channel_info(bot, message):
         await message.reply_document(file)
         os.remove(file)
 
+@Client.on_message(filters.command('ping'))
+async def ping(client, message):
+    start_time = time.monotonic()
+    msg = await message.reply("👀")
+    end_time = time.monotonic()
+    await msg.edit(f'{round((end_time - start_time) * 1000)} ms')
+
+@Client.on_message(filters.command('telegraph'))
+async def telegraph(bot, message):
+    reply_to_message = message.reply_to_message
+    if not reply_to_message:
+        return await message.reply('Reply to any photo or video.')
+    file = reply_to_message.photo or reply_to_message.video or None
+    if file is None:
+        return await message.reply('Invalid media.')
+    if file.file_size >= 5242880:
+        await message.reply_text(text="Send less than 5MB")   
+        return
+    text = await message.reply_text(text="ᴘʀᴏᴄᴇssɪɴɢ....")   
+    media = await reply_to_message.download()  
+    try:
+        response = upload_file(media)
+    except Exception as e:
+        await text.edit_text(text=f"Error - {e}")
+        return    
+    try:
+        os.remove(media)
+    except:
+        pass
+    await text.edit_text(f"<b>❤️ ʏᴏᴜʀ ᴛᴇʟᴇɢʀᴀᴘʜ ʟɪɴᴋ ᴄᴏᴍᴘʟᴇᴛᴇᴅ 👇</b>\n\n<code>https://telegra.ph/{response[0]}</code></b>")
+
+
+
 
 @Client.on_message(filters.command('logs') & filters.user(ADMINS))
 async def log_file(bot, message):
@@ -390,25 +423,6 @@ async def log_file(bot, message):
         await message.reply_document('Logs.txt')
     except Exception as e:
         await message.reply(str(e))
-
-@Client.on_message(filters.command('set_welcome'))
-async def save_welcome(client, message):
-    userid = message.from_user.id if message.from_user else None
-    if not userid:
-        return await message.reply("<b>You are Anonymous admin you can't use this command !</b>")
-    chat_type = message.chat.type
-    if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("Use this command in group.")      
-    grp_id = message.chat.id
-    title = message.chat.title
-    if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('You not admin in this group.')
-    try:
-        welcome = message.text.split(" ", 1)[1]
-    except:
-        return await message.reply_text("Command Incomplete!")    
-    await save_group_settings(grp_id, 'welcome_text', welcome)
-    await message.reply_text(f"Successfully changed welcome for {title} to\n\n{welcome}")
 
 @Client.on_message(filters.command('delete') & filters.user(ADMINS))
 async def delete(bot, message):

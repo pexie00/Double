@@ -8,23 +8,7 @@ from utils import get_size, temp, get_settings
 from Script import script
 from pyrogram.errors import ChatAdminRequired
 import asyncio
-import os
-import logging
-import random, string
-import asyncio
-import time
-from pyrogram import Client, filters, enums
-from pyrogram.errors import ChatAdminRequired, FloodWait, ButtonDataInvalid
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from database.ia_filterdb import Media
-from database.users_chats_db import db
-from utils import get_settings, get_size, temp, get_readable_time, get_wish
-import re
-import json
-import base64
-import sys
-from shortzy import Shortzy
-
+from utils import temp, get_readable_time
 """-----------------------------------------https://t.me/GetTGLink/4179 --------------------------------------"""
 
 @Client.on_message(filters.new_chat_members & filters.group)
@@ -171,17 +155,19 @@ async def re_enable_chat(bot, message):
     await message.reply("Chat Successfully re-enabled")
 
 
-@Client.on_message(filters.command('stats') & filters.user(ADMINS))
-async def stats(bot, message):
-    msg = await message.reply('Please Wait...')
+@Client.on_message(filters.command('stats') & filters.incoming)
+async def get_ststs(bot, message):
+    rju = await message.reply('Fetching stats..')
+    total_users = await db.total_users_count()
+    totl_chats = await db.total_chat_count()
     files = await Media.count_documents()
-    users = await db.total_users_count()
-    chats = await db.total_chat_count()
-    u_size = get_size(await db.get_db_size())
-    f_size = get_size(536870912 - await db.get_db_size())
-    uptime = get_readable_time(time.time() - temp.START_TIME)
-    await msg.edit(script.STATUS_TXT.format(files, users, chats, u_size, f_size, uptime))    
-    
+    size = await db.get_db_size()
+    free = 536870912 - size
+    size = get_size(size)
+    free = get_size(free)
+    await rju.edit(script.STATUS_TXT.format(files, total_users, totl_chats, size, free))
+
+
 
 @Client.on_message(filters.command('invite') & filters.user(ADMINS))
 async def gen_invite(bot, message):

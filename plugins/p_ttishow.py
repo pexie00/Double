@@ -9,6 +9,7 @@ from Script import script
 from pyrogram.errors import ChatAdminRequired
 import asyncio
 from utils import get_readable_time
+import time
 """-----------------------------------------https://t.me/GetTGLink/4179 --------------------------------------"""
 
 @Client.on_message(filters.new_chat_members & filters.group)

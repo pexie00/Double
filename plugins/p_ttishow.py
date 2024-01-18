@@ -16,7 +16,7 @@ import time
 from pyrogram import Client, filters, enums
 from pyrogram.errors import ChatAdminRequired, FloodWait, ButtonDataInvalid
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from database.ia_filterdb import Media, get_file_details, unpack_new_file_id, delete_files
+from database.ia_filterdb import Media
 from database.users_chats_db import db
 from utils import get_settings, get_size, temp, get_readable_time, get_wish
 import re

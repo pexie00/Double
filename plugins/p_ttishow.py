@@ -8,7 +8,7 @@ from utils import get_size, temp, get_settings
 from Script import script
 from pyrogram.errors import ChatAdminRequired
 import asyncio
-from utils import temp, get_readable_time
+from utils import get_readable_time
 """-----------------------------------------https://t.me/GetTGLink/4179 --------------------------------------"""
 
 @Client.on_message(filters.new_chat_members & filters.group)
@@ -165,7 +165,8 @@ async def get_ststs(bot, message):
     free = 536870912 - size
     size = get_size(size)
     free = get_size(free)
-    await rju.edit(script.STATUS_TXT.format(files, total_users, totl_chats, size, free))
+    uptime = get_readable_time(time.time() - temp.START_TIME)
+    await rju.edit(script.STATUS_TXT.format(files, total_users, totl_chats, size, free, uptime))
 
 
 

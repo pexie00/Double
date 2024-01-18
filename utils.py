@@ -765,3 +765,24 @@ async def check_verification(bot, userid):
                 return True
         else:
             return True
+
+def get_readable_time(seconds):
+    periods = [('d', 86400), ('h', 3600), ('m', 60), ('s', 1)]
+    result = ''
+    for period_name, period_seconds in periods:
+        if seconds >= period_seconds:
+            period_value, seconds = divmod(seconds, period_seconds)
+            result += f'{int(period_value)}{period_name}'
+    return result
+
+def get_wish():
+    tz = pytz.timezone('Asia/Colombo')
+    time = datetime.now(tz)
+    now = time.strftime("%H")
+    if now < "12":
+        status = "ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ 🧘‍♀️☕️"
+    elif now < "18":
+        status = "ɢᴏᴏᴅ ᴀꜰᴛᴇʀɴᴏᴏɴ 🍵🌟"
+    else:
+        status = "ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ ☾⋆⁺₊ 🎧𓍢ִ໋🌷"
+    return status

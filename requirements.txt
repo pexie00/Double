@@ -2,8 +2,8 @@ pyrofork
 umongo
 tgcrypto
 pymongo[srv]==3.12.3
-motor
-marshmallow
+motor==2.5.1
+marshmallow==3.14.1
 requests
 bs4
 git+https://github.com/Joelkb/cinemagoer
@@ -19,8 +19,6 @@ PyLeaves==1.0.2
 cinemagoer
 shortzy
 aiofiles
-pyromod
-telegraph
-
+pyromod==1.5
 telegraph
 openai

@@ -2,6 +2,7 @@ import os
 import logging
 import random
 import asyncio
+import time
 from Script import script
 from pyrogram import Client, filters, enums
 from pyrogram.errors import ChatAdminRequired, FloodWait
@@ -14,6 +15,9 @@ from database.connections_mdb import active_connection
 import re
 import json
 import base64
+import sys
+from shortzy import Shortzy
+from telegraph import upload_file
 logger = logging.getLogger(__name__)
 
 BATCH_FILES = {}
@@ -386,6 +390,26 @@ async def log_file(bot, message):
         await message.reply_document('Logs.txt')
     except Exception as e:
         await message.reply(str(e))
+
+@Client.on_message(filters.command('set_caption'))
+async def save_caption(client, message):
+    userid = message.from_user.id if message.from_user else None
+    if not userid:
+        return await message.reply("<b>You are Anonymous admin you can't use this command !</b>")
+    chat_type = message.chat.type
+    if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        return await message.reply_text("Use this command in group.")      
+    grp_id = message.chat.id
+    title = message.chat.title
+    if not await is_check_admin(client, grp_id, message.from_user.id):
+        return await message.reply_text('You not admin in this group.')
+    try:
+        caption = message.text.split(" ", 1)[1]
+    except:
+        return await message.reply_text("Command Incomplete!") 
+    await save_group_settings(grp_id, 'caption', caption)
+    await message.reply_text(f"Successfully changed caption for {title} to\n\n{caption}")
+        
 
 @Client.on_message(filters.command('delete') & filters.user(ADMINS))
 async def delete(bot, message):

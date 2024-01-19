@@ -484,6 +484,18 @@ async def import_site(link):
         logger.error(e)
         return f'{IMPORT_JK_SITE}/api?api={IMPORT_JK_API}&link={link}'
 
+def humanbytes(size):
+    if not size:
+        return ""
+    power = 2**10
+    n = 0
+    Dic_powerN = {0: ' ', 1: 'Ki', 2: 'Mi', 3: 'Gi', 4: 'Ti'}
+    while size > power:
+        size /= power
+        n += 1
+    return str(round(size, 2)) + " " + Dic_powerN[n] + 'B'
+    
+
 async def get_shortlink(link):
     settings = await get_settings(chat_id) #fetching settings for group
     if 'shortlink' in settings.keys():
@@ -739,6 +751,22 @@ async def verify_user(bot, userid, token):
     temp_time = date_var.strftime("%H:%M:%S")
     date_var, time_var = str(date_var).split(" ")
     await update_verify_status(user.id, date_var, temp_time)
+
+async def verify_VIP(bot, userid):
+    userid1 = int(userid)
+    tz = pytz.timezone('Asia/Kolkata')
+    date_var = datetime.now(tz)+timedelta(days=28)
+    temp_time = date_var.strftime("%H:%M:%S")
+    date_var, time_var = str(date_var).split(" ")
+    await update_verify_status(userid1, date_var, temp_time)
+
+async def verify_new(bot, userid):
+    userid1 = int(userid)
+    tz = pytz.timezone('Asia/Kolkata')
+    date_var = datetime.now(tz)+timedelta(hours=16)
+    temp_time = date_var.strftime("%H:%M:%S")
+    date_var, time_var = str(date_var).split(" ")
+    await update_verify_status(userid1, date_var, temp_time)
 
 async def check_verification(bot, userid):
     user = await bot.get_users(int(userid))

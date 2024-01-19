@@ -26,7 +26,7 @@ speedtest-cli
 PyLeaves==1.0.2
 cinemagoer
 aiofiles
-pyromod
+pyromod==1.5
 telegraph
 openai
 opencv-python-headless==4.7.0.68 

@@ -1737,7 +1737,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = "<b> {search} </b>"
+        cap = f"<b> {search} </b>"
     CAP[search] = cap
     if imdb and imdb.get('poster'):
         try:

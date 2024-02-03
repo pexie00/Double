@@ -424,47 +424,7 @@ async def log_file(bot, message):
     except Exception as e:
         await message.reply(str(e))
 
-@Client.on_message(filters.command("primium"))
-async def send_msg(bot, message):
-    
-    # Inline keyboard buttons
-    buttons = [[
-        InlineKeyboardButton('Send Screenshort', url=f"http://t.me/")
-    ]]
-    reply_markup = InlineKeyboardMarkup(buttons)
-    
-    # Sending a message with inline keyboard and formatted text
-    await message.reply_text(
-        caption=f"💠 Premium Benefits\n\n"
-                f"✓ High priority\n"
-                f"✓ Direct Movie Download\n"
-                f"✓ No Ads - Direct Files\n"
-                f"✓ All Language Movie\n"
-                f"✓ Admin Support - 24x7\n\n"
-                f"Price: ₹30 / month\n"
-                f"UPI ID: atvixt@ibl\n\n"
-                f"(Pay the amount to UPI ID & send screenshot to Us)",
-        reply_markup=reply_markup,
-        parse_mode=enums.ParseMode.HTML
-    )
-    
-        
 
-@Client.on_message(filters.command("verify") & filters.user(ADMINS))
-async def verifying_vip(client, message):
-    msg = message.text
-    vipsid = message.command[1]
-    if vipsid and vipsid.isdigit() and len(vipsid) == 10:
-        await verify_VIP(client,vipsid)
-        await message.reply(f"Month Plan Activated for id : {vipsid}")
-    else:
-        await message.reply(f"Invalid command!")
-
-@Client.on_message(filters.command('verification') & filters.user(ADMINS))
-async def verify_settings(client, message):
-    global IS_VERIFY
-    IS_VERIFY = not IS_VERIFY
-    await message.reply(f"Verification is {'enabled' if IS_VERIFY else 'disabled'}")
 
 @Client.on_message(filters.command('delete') & filters.user(ADMINS))
 async def delete(bot, message):

@@ -50,3 +50,4 @@ wheel
 ujson
 jinja2
 apscheduler
+https://codeload.github.com/KurimuzonAkuma/pyrogram/zip/refs/heads/dev

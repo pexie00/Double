@@ -281,7 +281,7 @@ async def start(client, message):
                 ]]
                 await message.reply_photo(
                     photo="https://telegra.ph/file/e5a72c75e349ebba4b35f.jpg",
-                    caption=f"<b>ʜᴇʟʟᴏ {message.from_user.mention}, ʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ\n\n Verification Link: {get_token} </b>",
+                    caption=f"<b>ʜᴇʟʟᴏ {message.from_user.mention}, ʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for one hour 🚀</b>",
                     reply_markup=InlineKeyboardMarkup(btn)
                 )
                 return
@@ -333,7 +333,7 @@ async def start(client, message):
         ]]
         await message.reply_photo(
             photo="https://telegra.ph/file/e5a72c75e349ebba4b35f.jpg",
-            caption=f"<b>ʜᴇʟʟᴏ {message.from_user.mention},\nʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ\n Verification link: {get_token} </b>",
+            caption=f"<b>ʜᴇʟʟᴏ {message.from_user.mention},\nʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for one hour 🚀\n  </b>",
             reply_markup=InlineKeyboardMarkup(btn)
         )
         return

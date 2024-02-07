@@ -250,13 +250,14 @@ async def start(client, message):
                 await verify_user(client, userid, token)
                 await message.reply_photo(
                     photo="https://telegra.ph/file/e5a72c75e349ebba4b35f.jpg",
-                    caption=f"<b>ʜᴇʏ {message.from_user.mention},\n ʏᴏᴜ ᴀʀᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴠᴇʀɪғɪᴇᴅ ! \n ɴᴏᴡ ʏᴏᴜ ʜᴀᴠᴇ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇss ғᴏʀ ᴀʟʟ ᴍᴏᴠɪᴇs for one hour🚀</b>",
+                    caption=f"<b>ʜᴇʏ {message.from_user.mention},\n ʏᴏᴜ ᴀʀᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴠᴇʀɪғɪᴇᴅ ! \n ɴᴏᴡ ʏᴏᴜ ʜᴀᴠᴇ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇss ғᴏʀ ᴀʟʟ ᴍᴏᴠɪᴇs for one hour🚀\n Now click on the below butn to get your file direct 👇👇👇</b>",
                     reply_markup=InlineKeyboardMarkup(btn)
                 )
                 return
             btn = [[
                 InlineKeyboardButton("Get File You requested before..! by clicking on me🚀😊", url=f"https://telegram.me/{temp.U_NAME}?start=files_{fileid}")
-            ]]
+                InlineKeyboardButton("now get files for one hour direct😁", url='t.me/movie_request_group_69'),
+            ]]              
             await message.reply_photo(
                 photo="https://telegra.ph/file/e5a72c75e349ebba4b35f.jpg",
                 caption=f"<b>ʜᴇʏ {message.from_user.mention}, \n ʏᴏᴜ ᴀʀᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴠᴇʀɪғɪᴇᴅ ! \nɴᴏᴡ ʏᴏᴜ ʜᴀᴠᴇ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇss ғᴏʀ ᴀʟʟ ᴍᴏᴠɪᴇs for one hour 🚀</b>",

@@ -63,7 +63,7 @@ async def stream_download(bot, query):
                 InlineKeyboardButton("📥 ᴅᴏᴡɴʟᴏᴀᴅ 📥", url=download),
                 InlineKeyboardButton("🖥️ ꜱᴛʀᴇᴇᴍ 🖥️", url=online)
             ],[
-                InlineKeyboardButton('⁉️ ᴄʟᴏsᴇ ⁉️', callback_data='close_data')
+                InlineKeyboardButton('Updates/latest content', url='t.me/hdlinks4uu')
             ]
         ]
     ))

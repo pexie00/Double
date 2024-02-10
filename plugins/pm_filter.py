@@ -104,7 +104,7 @@ async def pm_text(bot, message):
     user_id = message.from_user.id
     if content.startswith("/") or content.startswith("#"): return  # ignore commands and hashtags
     if user_id in ADMINS: return # ignore admins
-    await message.reply_text("<b>ए दोस्त यहां मूवी नही मिलेगा ग्रुप में मांगो 👉, @apnamovie4</b>")
+    await message.reply_text("<b>ए दोस्त यहां मूवी नही मिलेगा ग्रुप में मांगो 👉, @movie_request_group_69</b>")
     await bot.send_message(
         chat_id=LOG_CHANNEL,
         text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"
@@ -1225,8 +1225,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('• ᴜᴘᴅᴀᴛᴇs •', url=CHNL_LNK),
                     InlineKeyboardButton('• Gʀᴏᴜᴘ •', url=GRP_LNK)
                 ],[
-                    InlineKeyboardButton('• Hᴇʟᴘ •', callback_data='help'),
-                    InlineKeyboardButton('• Aʙᴏᴜᴛ •', callback_data='about')
+                    InlineKeyboardButton(' nothing ', url='t.me/')
                   ]]
         
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -1739,7 +1738,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"<b>Hᴇʏ {message.from_user.mention}, Hᴇʀᴇ ɪs Wʜᴀᴛ I Fᴏᴜɴᴅ Iɴ Mʏ Dᴀᴛᴀʙᴀsᴇ Fᴏʀ Yᴏᴜʀ Qᴜᴇʀʏ {search}.</b>"
+        cap = f"<b> {search} </b>"
     CAP[search] = cap
     if imdb and imdb.get('poster'):
         try:
@@ -1747,12 +1746,12 @@ async def auto_filter(client, msg, spoll=False):
             await m.delete()
             try:
                 if settings['auto_delete']:
-                    await asyncio.sleep(600)
+                    await asyncio.sleep(70)
                     await hehe.delete()
                     await message.delete()
             except KeyError:
                 await save_group_settings(message.chat.id, 'auto_delete', True)
-                await asyncio.sleep(600)
+                await asyncio.sleep(70)
                 await hehe.delete()
                 await message.delete()
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
@@ -1761,12 +1760,12 @@ async def auto_filter(client, msg, spoll=False):
             hmm = await message.reply_photo(photo=poster, caption=cap[:1024] + files_link, reply_markup=InlineKeyboardMarkup(btn))
             try:
                 if settings['auto_delete']:
-                    await asyncio.sleep(600)
+                    await asyncio.sleep(80)
                     await hmm.delete()
                     await message.delete()
             except KeyError:
                 await save_group_settings(message.chat.id, 'auto_delete', True)
-                await asyncio.sleep(600)
+                await asyncio.sleep(80)
                 await hmm.delete()
                 await message.delete()
         except Exception as e:
@@ -1774,12 +1773,12 @@ async def auto_filter(client, msg, spoll=False):
             fek = await message.reply_photo(photo=NOR_IMG, caption=cap + files_link, reply_markup=InlineKeyboardMarkup(btn))
             try:
                 if settings['auto_delete']:
-                    await asyncio.sleep(600)
+                    await asyncio.sleep(80)
                     await fek.delete()
                     await message.delete()
             except KeyError:
                 await save_group_settings(message.chat.id, 'auto_delete', True)
-                await asyncio.sleep(600)
+                await asyncio.sleep(80)
                 await fek.delete()
                 await message.delete()
     else:
@@ -1787,12 +1786,12 @@ async def auto_filter(client, msg, spoll=False):
         await m.delete()
         try:
             if settings['auto_delete']:
-                await asyncio.sleep(600)
+                await asyncio.sleep(80)
                 await fuk.delete()
                 await message.delete()
         except KeyError:
             await save_group_settings(message.chat.id, 'auto_delete', True)
-            await asyncio.sleep(600)
+            await asyncio.sleep(10)
             await fuk.delete()
             await message.delete()
     if spoll:

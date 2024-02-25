@@ -42,31 +42,31 @@ SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(
 NO_RESULTS_MSG = is_enabled((environ.get("NO_RESULTS_MSG", 'True')), False)
 
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://wikitop190:nothing@cluster0.bjrdwan.mongodb.net/?retryWrites=true&w=majority")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://VEGA:VEGA@cluster0.hgptsjm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_NAME = environ.get('DATABASE_NAME', "cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 #this shortlink working
-IMPORT_JK_SITE = environ.get('IMPORT_JK_SITE', 'krownlinks.com')
-IMPORT_JK_API = environ.get('IMPORT_JK_API', '2a757fa5b16d56e25a401e1ddd79f17e47b6ff19')
+IMPORT_JK_SITE = environ.get('IMPORT_JK_SITE', 'nanolinks.in')
+IMPORT_JK_API = environ.get('IMPORT_JK_API', 'a71b1a34f1300901e5865e738267409d06059d43')
 IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), True)
 
 # Others
 IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'True')), True)
 HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/qgJFur2luoE3ZjRk/9")
-VERIFY2_URL = environ.get('VERIFY2_URL', "krownlinks.com")
-VERIFY2_API = environ.get('VERIFY2_API', "2a757fa5b16d56e25a401e1ddd79f17e47b6ff19")
+VERIFY2_URL = environ.get('VERIFY2_URL', "teraboxlinks.com")
+VERIFY2_API = environ.get('VERIFY2_API', "c9310fe787d41c661246ff65773d810f8125c6fd")
 
 # 👇==============this doesn't work===============👇
-SHORTLINK_URL = environ.get('SHORTLINK_URL', 'krownlinks.com')
-SHORTLINK_API = environ.get('SHORTLINK_API', '2a757fa5b16d56e25a401e1ddd79f17e47b6ff19')
+SHORTLINK_URL = environ.get('SHORTLINK_URL', 'nanolinks.in')
+SHORTLINK_API = environ.get('SHORTLINK_API', 'a71b1a34f1300901e5865e738267409d06059d43')
 # ☝️==============don't remove this===============☝️
 
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '0').split()]
 MAX_B_TN = environ.get("MAX_B_TN", "7")
 MAX_BTN = is_enabled((environ.get('MAX_BTN', "True")), True)
 PORT = environ.get("PORT", "8080")
-GRP_LNK = environ.get('GRP_LNK', 'https://t.me/movie_request_group_69')
+GRP_LNK = environ.get('GRP_LNK', 'https://t.me/VegaMovies_Groups')
 CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/hdlinks4uu')
 MSG_ALRT = environ.get('MSG_ALRT', 'Wʜᴀᴛ Aʀᴇ Yᴏᴜ Lᴏᴏᴋɪɴɢ Aᴛ ?')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', -1002146432822))

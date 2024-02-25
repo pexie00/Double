@@ -54,8 +54,8 @@ IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), True)
 # Others
 IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'True')), True)
 HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/qgJFur2luoE3ZjRk/9")
-VERIFY2_URL = environ.get('VERIFY2_URL', "teraboxlinks.com")
-VERIFY2_API = environ.get('VERIFY2_API', "c9310fe787d41c661246ff65773d810f8125c6fd")
+VERIFY2_URL = environ.get('VERIFY2_URL', "nanolinks.in")
+VERIFY2_API = environ.get('VERIFY2_API', "a71b1a34f1300901e5865e738267409d06059d43")
 
 # 👇==============this doesn't work===============👇
 SHORTLINK_URL = environ.get('SHORTLINK_URL', 'nanolinks.in')

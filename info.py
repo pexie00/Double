@@ -62,7 +62,7 @@ SHORTLINK_URL = environ.get('SHORTLINK_URL', 'krownlinks.com')
 SHORTLINK_API = environ.get('SHORTLINK_API', '2a757fa5b16d56e25a401e1ddd79f17e47b6ff19')
 # ☝️==============don't remove this===============☝️
 
-DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '0').split()]
+DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '-1002036736520').split()]
 MAX_B_TN = environ.get("MAX_B_TN", "7")
 MAX_BTN = is_enabled((environ.get('MAX_BTN', "True")), True)
 PORT = environ.get("PORT", "8080")

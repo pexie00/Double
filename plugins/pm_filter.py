@@ -37,6 +37,7 @@ logger.setLevel(logging.ERROR)
 BUTTONS = {}
 SPELL_CHECK = {}
 CAP = {}
+REACTIONS = ["🔥", "❤️", "😍", "⚡"]
 
 @Client.on_callback_query(filters.regex(r"^streaming"))
 async def stream_download(bot, query):
@@ -71,6 +72,7 @@ async def stream_download(bot, query):
 
 @Client.on_message(filters.group | filters.private & filters.text & filters.incoming)
 async def give_filter(client, message):
+    await message.react(emoji=random.choice(REACTIONS))
     if message.chat.id != SUPPORT_CHAT_ID:
         glob = await global_filters(client, message)
         if glob == False:

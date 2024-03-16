@@ -1,4 +1,4 @@
-pyrofork
+git+https://github.com/KurimuzonAkuma/pyrogram
 umongo
 tgcrypto
 pymongo[srv]==3.12.3

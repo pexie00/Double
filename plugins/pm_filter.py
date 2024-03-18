@@ -37,8 +37,7 @@ logger.setLevel(logging.ERROR)
 BUTTONS = {}
 SPELL_CHECK = {}
 CAP = {}
-REACTIONS = ["🔥", "❤️", "😍", "⚡"]
-
+REACTIONS = ["🔥", "❤️", "😍", "⚡", "🥵", "😅", "😁", "🤡", "🦥", "😏", "💩", "🙂", "😂", "😢", "😔", "😎", "😐", "😒", "😠", "🤬", "👹", "😬", "🙈", "😙", "🤪", "💀", "👽", "☹️", "🙏"]
 @Client.on_callback_query(filters.regex(r"^streaming"))
 async def stream_download(bot, query):
     file_id = query.data.split('#', 1)[1]

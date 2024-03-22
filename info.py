@@ -25,8 +25,12 @@ PICS = (environ.get('PICS', 'https://telegra.ph/file/91146a63860aded52ddce.jpg')
 NOR_IMG = environ.get("NOR_IMG", "https://telegra.ph/file/46443096bc6895c74a716.jpg")
 MELCOW_VID = environ.get("MELCOW_VID", "https://telegra.ph/file/6956255e32d5383952cb6.jpg")
 SPELL_IMG = environ.get("SPELL_IMG", "https://telegra.ph/file/b4b20462d805612a2dc73.jpg")
+SUBSCRIPTION = (environ.get('SUBSCRIPTION', 'https://graph.org/file/12adf3a7451bf2a72b454.jpg'))
+CODE = (environ.get('CODE', 'https://telegra.ph/file/2217e1bd03dc0f8146d75.jpg')) # Scanner Code image 
+
 
 # Admins, Channels & Users
+OWNER_USER_NAME = environ.get("OWNER_USER_NAME", "jk_dev") # widout 👉 @
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5510849897').split()]
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002036366565').split()]
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
@@ -46,21 +50,28 @@ DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://VEGA:VEGA@cluster0.hgp
 DATABASE_NAME = environ.get('DATABASE_NAME', "cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
-#this shortlink working
-IMPORT_JK_SITE = environ.get('IMPORT_JK_SITE', 'nanolinks.in')
-IMPORT_JK_API = environ.get('IMPORT_JK_API', 'a71b1a34f1300901e5865e738267409d06059d43')
-IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'True')), True)
+# fill premium users id
+PREMIUM_USER = [int(user) if id_pattern.search(user) else user for user in environ.get('PREMIUM_USER', '7015329594').split()]
+
+#stream link shortner
+STREAM_SITE = (environ.get('STREAM_SITE', 'urlshortx.com'))
+STREAM_API = (environ.get('STREAM_API', '8afa8fbc218cc0791c62495f2c510c92524503ce'))
+STREAMHTO = (environ.get('STREAMHTO', 'https://t.me/Hoghjhh'))
+STREAM_LINK_MODE = is_enabled((environ.get('STREAM_LINK_MODE', "False")), False)
 
 # Others
 IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'False')), False)
-HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/qgJFur2luoE3ZjRk/9")
-VERIFY2_URL = environ.get('VERIFY2_URL', "nanolinks.in")
-VERIFY2_API = environ.get('VERIFY2_API', "a71b1a34f1300901e5865e738267409d06059d43")
+HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/c/1845700490/3")
+VERIFY2_URL = environ.get('VERIFY2_URL', "ziplinker.net")
+VERIFY2_API = environ.get('VERIFY2_API', "e45148e36c775f7602b27f6036bcd96a750db1c8")
 
-# 👇==============this doesn't work===============👇
-SHORTLINK_URL = environ.get('SHORTLINK_URL', 'nanolinks.in')
-SHORTLINK_API = environ.get('SHORTLINK_API', 'a71b1a34f1300901e5865e738267409d06059d43')
-# ☝️==============don't remove this===============☝️
+# file Shortner urls
+SHORTLINK_URL = environ.get('SHORTLINK_URL', 'ziplinker.net')
+SHORTLINK_API = environ.get('SHORTLINK_API', 'e45148e36c775f7602b27f6036bcd96a750db1c8')
+IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), False)
+
+TUTORIAL = environ.get('TUTORIAL', 'https://t.me/shortnf')
+IS_TUTORIAL = bool(environ.get('IS_TUTORIAL', True))
 
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '0').split()]
 MAX_B_TN = environ.get("MAX_B_TN", "7")
@@ -108,24 +119,7 @@ BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
 FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
 URL = "https://{}/".format(FQDN) if ON_HEROKU or NO_PORT else \
     "https://{}:{}/".format(FQDN, PORT)
-SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
-WORKERS = int(environ.get('WORKERS', '4'))
-SESSION_NAME = str(environ.get('SESSION_NAME', 'LusiBot'))
-MULTI_CLIENT = False
-name = str(environ.get('name', 'Lusifilms'))
-PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
-if 'DYNO' in environ:
-    ON_HEROKU = True
-    APP_NAME = str(getenv('APP_NAME'))
 
-else:
-    ON_HEROKU = False
-HAS_SSL=bool(getenv('HAS_SSL',True))
-if HAS_SSL:
-    URL = "https://{}/".format(FQDN)
-else:
-    URL = "https://{}/".format(FQDN)
-REPO_OWNER = "Developerr"
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
 LOG_STR += ("IMDB Results are enabled, Bot will be showing imdb details for you queries.\n" if IMDB else "IMBD Results are disabled.\n")

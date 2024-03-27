@@ -29,16 +29,16 @@ async def render_page(message_id):
         async with aiofiles.open('jk_dev/template/req.html') as r:
             heading = 'Watch {}'.format(file_name)
             tag = mime_type.split('/')[0].strip()
-            html = (await r.read()).replace('tag', tag) % (heading, file_name, src)
+            html = (await r.read()).replace('tag', tag) % (heading, src, file_name)
     elif mime_type.lower() in audio_formats:
         async with aiofiles.open('jk_dev/template/req.html') as r:
             heading = 'Listen {}'.format(file_name)
             tag = mime_type.split('/')[0].strip()
-            html = (await r.read()).replace('tag', tag) % (heading, file_name, src)
+            html = (await r.read()).replace('tag', tag) % (heading, src , file_name)
     else:
         async with aiofiles.open('jk_dev/template/dl.html') as r:
             async with aiohttp.ClientSession() as s:
                 async with s.get(src) as u:
                     file_size = get_size(u.headers.get('Content-Length'))
-                    html = (await r.read()) % (heading, file_name, src, file_size)
+                    html = (await r.read()) % (heading, file_name ,src, file_size)
     return html

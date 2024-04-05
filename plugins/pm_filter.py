@@ -1899,7 +1899,7 @@ async def advantage_spell_chok(client, msg):
                     await asyncio.sleep(10)
                     await spell_check_del.delete()
                     await msg.delete()
-    
+
 
 async def manual_filters(client, message, text=False):
     settings = await get_settings(message.chat.id)

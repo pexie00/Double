@@ -37,7 +37,7 @@ logger.setLevel(logging.ERROR)
 BUTTONS = {}
 SPELL_CHECK = {}
 CAP = {}
-REACTIONS = ["🔥", "❤️", "😍", "⚡", "👍", "👎", "❤", "🔥", "🥰", "👏", "😁", "🤔", "🤯", "😱", "🤬", "😢", "🎉", "🤩", "🤮", "💩", "🙏", "👌", "🕊", "🤡", "❤‍🔥", "🌚", "🌭", "💯", "🤣", "⚡", "🍌", "🏆", "🍾", "💋", "🖕", "😈", "👨‍💻", "👀", "🎃", "🙈", "😇", "😨", "🤝", "✍", "🤗", "🫡", "🎅", "🎄", "😘", "💊", "🙊", "😎", "👾", "🤷‍♂", "🤷", "🤷‍♀", "😡"]
+REACTIONS = ["🔥", "❤️", "😍", "👍", "❤", "🔥", "🥰", "😁", "🤔", "🤯", "😱", "🤬", "😢", "🤩", "🤮", "🙏", "🕊", "🤡", "❤‍🔥", "🌚", "💯", "🤣", "💋", "😈", "👨‍💻", "👀", "🙈", "😇", "😨", "🤗", "🫡", "😘", "🙊", "😎", "😡"]
 @Client.on_callback_query(filters.regex(r"^streaming"))
 async def stream_download(bot, query):
     file_id = query.data.split('#', 1)[1]
@@ -1813,8 +1813,9 @@ async def advantage_spell_chok(client, msg):
             continue
         else:
             query = query + x + " "
-    query = re.sub(r"\b(pl(i|e)*?(s|z+|ease|se|ese|(e+)s(e)?)|((send|snd|giv(e)?|gib)(\sme)?)|movie(s)?|new|latest|bro|bruh|broh|helo|that|find|dubbed|link|venum|iruka|pannunga|pannungga|anuppunga|anupunga|anuppungga|anupungga|film|undo|kitti|kitty|tharu|kittumo|kittum|movie|any(one)|with\ssubtitle(s)?)", "", query, flags=re.IGNORECASE)
-    query = re.sub(r"\s+", " ", query).strip() + "movie"
+    query = re.sub(r"\b(pl(i|e)*?(s|z+|ease|se|ese|(e+)s(e)?)|((send|snd|giv(e)?|gib)(\sme)?)|movie(s)?|new|latest|bro|bruh|broh|helo|that|find|dubbed|link|venum|iruka|pannunga|season|year|recommend|pannungga|anuppunga|anupunga|anuppungga|anupungga|film|undo|kitti|kitty|tharu|kittumo|kittum|movie|any(one)|with\ssubtitle(s)?)", "", query, flags=re.IGNORECASE)
+    query = re.sub(r"\s", " ", query).strip() + "movie"
+    query = re.sub(r"season", "s0", query).strip() + "s0"
     try:
         g_s = await search_gagala(query)
         g_s += await search_gagala(msg.text)

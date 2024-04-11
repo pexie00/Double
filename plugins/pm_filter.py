@@ -1617,6 +1617,7 @@ async def auto_filter(client, msg, spoll=False):
             search = re.sub(r"\s+", " ", search).strip()
             search = search.replace("-", " ")
             search = search.replace(":","")
+            search = search.replace("maidan","maidaan")
             files, offset, total_results = await get_search_results(message.chat.id ,search, offset=0, filter=True)
             settings = await get_settings(message.chat.id)
             if not files:

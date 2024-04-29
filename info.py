@@ -54,8 +54,8 @@ IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), True)
 # Others
 IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'True')), True)
 HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/qgJFur2luoE3ZjRk/9")
-VERIFY2_URL = environ.get('VERIFY2_URL', "krownlinks.com")
-VERIFY2_API = environ.get('VERIFY2_API', "2a757fa5b16d56e25a401e1ddd79f17e47b6ff19")
+VERIFY2_URL = environ.get('VERIFY2_URL', "runurl.in")
+VERIFY2_API = environ.get('VERIFY2_API', "5ded77b22702384445c62b91df093b3d37f8fcf4")
 
 # 👇==============this doesn't work===============👇
 SHORTLINK_URL = environ.get('SHORTLINK_URL', 'krownlinks.com')

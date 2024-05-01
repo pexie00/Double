@@ -16,7 +16,7 @@ from info import *
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
-from utils import get_size, is_subscribed, get_poster, search_gagala, temp, get_settings, save_group_settings, import_site, get_shortlink, send_all, check_verification, get_token
+from utils import get_size, is_subscribed, get_poster, search_gagala, temp, get_settings, save_group_settings, import_site, get_shortlink, send_all, check_verification, get_token, stream_site
 from database.users_chats_db import db
 from database.ia_filterdb import Media, get_file_details, get_search_results, get_bad_files
 from database.filters_mdb import (
@@ -39,6 +39,7 @@ SPELL_CHECK = {}
 CAP = {}
 REACTIONS = ["🔥", "❤️", "😍", "👍", "❤", "🔥", "🥰", "😁", "🤔", "🤯", "😱", "🤬", "😢", "🤩", "🤮", "🙏", "🕊", "🤡", "❤‍🔥", "🌚", "💯", "🤣", "💋", "😈", "👨‍💻", "👀", "🙈", "😇", "😨", "🤗", "🫡", "😘", "🙊", "😎", "😡"]
 @Client.on_callback_query(filters.regex(r"^streaming"))
+@Client.on_callback_query(filters.regex(r"^streaming"))
 async def stream_download(bot, query):
     file_id = query.data.split('#', 1)[1]
     msg = await bot.send_cached_media(
@@ -48,27 +49,30 @@ async def stream_download(bot, query):
     username =  query.from_user.mention 
     online = f"{URL}watch/{msg.id}"
     download = f"{URL}download/{msg.id}"
-    
-    await msg.reply_text(
-        text=f"tg://openmessage?user_id={user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username}",
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📥 ᴅᴏᴡɴʟᴏᴀᴅ 📥", url=download),
-                                            InlineKeyboardButton('🖥️ ꜱᴛʀᴇᴇᴍ 🖥️', url=online)]])
-    )
-    await query.answer("ऐ दोस्त एक काम कर 🙋\nअपने दोस्त को Invite कर 💁\n\nऔर Streaming इंज्वॉय कर 😛", show_alert=True)
-    await query.edit_message_reply_markup(
-        reply_markup=InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton("📥 ᴅᴏᴡɴʟᴏᴀᴅ 📥", url=download),
-                InlineKeyboardButton("🖥️ ꜱᴛʀᴇᴇᴍ 🖥️", url=online)
-            ],[
-                InlineKeyboardButton('Updates/latest content', url='t.me/hdlinks4uu')
-            ]
-        ]
-    ))
-
-
+    non_online = await stream_site(online)
+    non_download = await stream_site(download)
+    if STREAM_LINK_MODE == True:  
+        await msg.reply_text(text=f"tg://openmessage?user_id={user_id}\n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} LINK MODE ON",
+            reply_markup=InlineKeyboardMarkup([[
+                    InlineKeyboardButton("🖥️ ꜱᴛʀᴇᴇᴍ 🖥️", url=non_online)]]))
+        await query.answer("Short link generated! Streaming service is now available only through shortlinks!", show_alert=True)
+        await query.edit_message_reply_markup(
+            reply_markup=InlineKeyboardMarkup([[
+                    InlineKeyboardButton("🖥️ ꜱᴛʀᴇᴇᴍ 🖥️", url=non_online)
+                ],[
+                    InlineKeyboardButton('⁉️ Hᴏᴡ Tᴏ Dᴏᴡɴʟᴏᴀᴅ ⁉️', url=STREAMHTO)]]))
+    else:
+        await msg.reply_text(text=f"tg://openmessage?user_id={user_id}\n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} SHORT MODE OFF",
+            reply_markup=InlineKeyboardMarkup([[
+                    InlineKeyboardButton("📥 ᴅᴏᴡɴʟᴏᴀᴅ 📥", url=download),
+                    InlineKeyboardButton("🖥️ ꜱᴛʀᴇᴇᴍ 🖥️", url=online)]]))
+        await query.edit_message_reply_markup(
+            reply_markup=InlineKeyboardMarkup([[
+                    InlineKeyboardButton("📥 ᴅᴏᴡɴʟᴏᴀᴅ 📥", url=download),
+                    InlineKeyboardButton("🖥️ ꜱᴛʀᴇᴇᴍ 🖥️", url=online)
+                ],[
+                    InlineKeyboardButton('Update letest content', url='https://t.me/hdlinks4uu')]]))
+                        
 @Client.on_message(filters.group | filters.private & filters.text & filters.incoming)
 async def give_filter(client, message):
     await message.react(emoji=random.choice(REACTIONS))

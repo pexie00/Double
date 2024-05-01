@@ -53,6 +53,10 @@ class temp(object):
     SEND_ALL_TEMP = {}
     KEYWORD = {}
     BOT = None
+    JK_DEV = {}
+    SHORT = {}
+    GETALL = {}
+    SPELL_CHECK = {}
     
 async def is_subscribed(bot, query=None, userid=None):
     try:
@@ -483,6 +487,30 @@ async def import_site(link):
         logger.error(e)
         return f'{IMPORT_JK_SITE}/api?api={IMPORT_JK_API}&link={link}'
 
+async def stream_site(link):
+    https = link.split(":")[0]
+    if "http" == https:
+        https = "https"
+        link = link.replace("http", https)
+    url = f'https://{STREAM_SITE}/api'
+    params = {'api': STREAM_API,
+              'url': link,
+              }
+
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, params=params, raise_for_status=True, ssl=False) as response:
+                data = await response.json()
+                if data["status"] == "success":
+                    return data['shortenedUrl']
+                else:
+                    logger.error(f"Error: {data['message']}")
+                    return f'https://{STREAM_SITE}/api?api={STREAM_API}&link={link}'
+
+    except Exception as e:
+        logger.error(e)
+        return f'{STREAM_SITE}/api?api={STREAM_API}&link={link}'
+        
 async def get_shortlink(link):
     settings = await get_settings(chat_id) #fetching settings for group
     if 'shortlink' in settings.keys():

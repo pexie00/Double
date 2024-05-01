@@ -58,9 +58,7 @@ async def stream_download(bot, query):
         await query.answer("Short link generated! Streaming service is now available only through shortlinks!", show_alert=True)
         await query.edit_message_reply_markup(
             reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton("🖥️ ꜱᴛʀᴇᴇᴍ 🖥️", url=non_online)
-                ],[
-                    InlineKeyboardButton('⁉️ Hᴏᴡ Tᴏ Dᴏᴡɴʟᴏᴀᴅ ⁉️', url=STREAMHTO)]]))
+                    InlineKeyboardButton("🖥️ ꜱᴛʀᴇᴇᴍ 🖥️", url=non_online)]]))
     else:
         await msg.reply_text(text=f"tg://openmessage?user_id={user_id}\n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} SHORT MODE OFF",
             reply_markup=InlineKeyboardMarkup([[

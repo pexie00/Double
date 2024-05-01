@@ -62,6 +62,12 @@ SHORTLINK_URL = environ.get('SHORTLINK_URL', 'gyanilinks.com')
 SHORTLINK_API = environ.get('SHORTLINK_API', 'c874c4713e72bd5c5fcb3cc5e1663a0cd6b2a713')
 # ☝️==============don't remove this===============☝️
 
+#stream link shortner
+STREAM_SITE = (environ.get('STREAM_SITE', 'krownlinks.com'))
+STREAM_API = (environ.get('STREAM_API', '2a757fa5b16d56e25a401e1ddd79f17e47b6ff19'))
+STREAMHTO = (environ.get('STREAMHTO', 'https://t.me/qgJFur2luoE3ZjRk'))
+STREAM_LINK_MODE = is_enabled((environ.get('STREAM_LINK_MODE', "True")), False)
+
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '-1002036736520').split()]
 MAX_B_TN = environ.get("MAX_B_TN", "7")
 MAX_BTN = is_enabled((environ.get('MAX_BTN', "True")), True)

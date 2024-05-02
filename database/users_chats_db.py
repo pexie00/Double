@@ -11,6 +11,7 @@ class Database:
         self.col = self.db.users
         self.grp = self.db.groups
         self.users = self.db.uersz
+        self.verify_count = self.db.verify_count
 
 
     def new_user(self, id, name):
@@ -165,5 +166,20 @@ class Database:
 
     async def get_db_size(self):
         return (await self.db.command("dbstats"))['dataSize']
+
+    async def set_verify_count(self):
+        try:
+            expiration_time = datetime.datetime.combine(datetime.datetime.utcnow().date(), datetime.time(12, 0))
+            await self.verify_count.update_one(
+                {},
+                {'$inc': {'verification_count': 1}, '$set': {'expiration_time': expiration_time}},
+                upsert=True
+            )
+            await self.verify_count.create_index('expiration_time', expireAfterSeconds=0)
+            newcount_doc = await self.verify_count.find_one({})
+            return newcount_doc['verification_count']
+        except Exception as e:
+            print(f"Error: {e}")
+            return False            
         
 db = Database(DATABASE_URI, DATABASE_NAME)

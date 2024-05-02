@@ -181,5 +181,5 @@ class Database:
             return newcount_doc['verification_count']
         except Exception as e:
             print(f"Error: {e}")
-            return False
+            return str(e)
 db = Database(DATABASE_URI, DATABASE_NAME)

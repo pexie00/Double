@@ -172,7 +172,7 @@ class Database:
     async def set_verify_count(self):
         try:
             current_time_utc = datetime.datetime.now(datetime.timezone.utc)
-            expiration_time = datetime.datetime.combine(current_time_utc.date(), datetime.time(0, 0))
+            expiration_time = datetime.datetime.combine(current_time_utc.date() + datetime.timedelta(days=1), datetime.time(0, 0))
             await self.verify_count.update_one(
                 {},
                 {'$inc': {'verification_count': 1}, '$set': {'expiration_time': expiration_time}},

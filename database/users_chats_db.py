@@ -1,7 +1,7 @@
 # https://github.com/odysseusmax/animated-lamp/blob/master/bot/database/database.py
 import motor.motor_asyncio
 from info import DATABASE_NAME, DATABASE_URI, IMDB, IMDB_TEMPLATE, MELCOW_NEW_USERS, P_TTI_SHOW_OFF, SINGLE_BUTTON, SPELL_CHECK_REPLY, PROTECT_CONTENT, AUTO_DELETE, MAX_BTN, AUTO_FFILTER, SHORTLINK_API, SHORTLINK_URL, IS_SHORTLINK
-import datetime
+from datetime import timezone
 
 class Database:
     
@@ -169,7 +169,8 @@ class Database:
 
     async def set_verify_count(self):
         try:
-            expiration_time = datetime.datetime.combine(datetime.datetime.utcnow().date(), datetime.time(12, 0))
+            current_time_utc = datetime.datetime.now(timezone.utc)
+            expiration_time = datetime.datetime.combine(current_time_utc.date(), datetime.time(0, 0))
             await self.verify_count.update_one(
                 {},
                 {'$inc': {'verification_count': 1}, '$set': {'expiration_time': expiration_time}},

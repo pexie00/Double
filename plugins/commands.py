@@ -254,7 +254,7 @@ async def start(client, message):
                     reply_markup=InlineKeyboardMarkup(btn)
                 )
                 return
-            v_count = await db.set_verify_count()                
+            v_count = await db.set_verify_count(message.from_user.id)                
             await client.send_message(LOG_CHANNEL , f"<b>{message.from_user.mention()} is verified 😗\nUser id : {message.from_user.id}\nTotal verified toady <code>{v_count}</code>\n\nRadhe Radhe 😉</b>")
             btn = [[
                 InlineKeyboardButton("Get File You requested before..! by clicking on me🚀😊", url=f"https://telegram.me/{temp.U_NAME}?start=files_{fileid}")

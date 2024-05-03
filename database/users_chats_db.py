@@ -166,22 +166,33 @@ class Database:
         return self.grp.find({})
 
 
-    async def get_db_size(self):
-        return (await self.db.command("dbstats"))['dataSize']
-
-    async def set_verify_count(self):
+    async def set_verify_count(self, userID):
         try:
-            current_time_utc = datetime.datetime.now(datetime.timezone.utc)
-            expiration_time = datetime.datetime.combine(current_time_utc.date() + datetime.timedelta(days=1), datetime.time(0, 0))
-            await self.verify_count.update_one(
-                {},
-                {'$inc': {'verification_count': 1}, '$set': {'expiration_time': expiration_time}},
-                upsert=True
-            )
-            await self.verify_count.create_index('expiration_time', expireAfterSeconds=0)
-            newcount_doc = await self.verify_count.find_one({})
-            return newcount_doc['verification_count']
+            userIDList = await self.verify_count.find_one({})
+            if userIDList:
+                if userID in userIDList.get('user_ids', []):
+                    return userIDList.get('verification_count', 0)
+                else:
+                    user_ids = userIDList.get('user_ids', []) + [userID]
+                    current_time_utc = datetime.now(datetime.timezone.utc)
+                    expiration_time = datetime.combine((current_time_utc + datetime.timedeltatimedelta(days=1)).date(), datetime.time(0, 0))
+                    await self.verify_count.update_one(
+                        {},
+                        {'$inc': {'verification_count': 1}, '$set': {'expiration_time': expiration_time, 'user_ids': user_ids}},
+                        upsert=True
+                    )
+                    await self.verify_count.create_index('expiration_time', expireAfterSeconds=0)
+                    return userIDList.get('verification_count', 0) + 1
+            else:
+                current_time_utc = datetime.now(datetime.timezone.utc)
+                expiration_time = datetime.combine((current_time_utc + datetime.timedelta(days=1)).date(), datetime.time(0, 0))
+                await self.verify_count.insert_one({'verification_count': 1, 'expiration_time': expiration_time, 'user_ids': [userID]})
+                await self.verify_count.create_index('expiration_time', expireAfterSeconds=0)
+                return 1
         except Exception as e:
             print(f"Error: {e}")
             return str(e)
+
+
+
 db = Database(DATABASE_URI, DATABASE_NAME)

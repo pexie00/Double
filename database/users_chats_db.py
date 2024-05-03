@@ -2,9 +2,6 @@
 import motor.motor_asyncio
 from info import DATABASE_NAME, DATABASE_URI, IMDB, IMDB_TEMPLATE, MELCOW_NEW_USERS, P_TTI_SHOW_OFF, SINGLE_BUTTON, SPELL_CHECK_REPLY, PROTECT_CONTENT, AUTO_DELETE, MAX_BTN, AUTO_FFILTER, SHORTLINK_API, SHORTLINK_URL, IS_SHORTLINK
 import datetime
-
-
-
 class Database:
     
     def __init__(self, uri, database_name):
@@ -174,8 +171,8 @@ class Database:
                     return userIDList.get('verification_count', 0)
                 else:
                     user_ids = userIDList.get('user_ids', []) + [userID]
-                    current_time_utc = datetime.now(datetime.timezone.utc)
-                    expiration_time = datetime.combine((current_time_utc + datetime.timedeltatimedelta(days=1)).date(), datetime.time(0, 0))
+                    current_time_utc = datetime.datetime.now(datetime.timezone.utc)
+                    expiration_time = datetime.datetime.combine((current_time_utc + datetime.timedeltatimedelta(days=1)).date(), datetime.time(0, 0))
                     await self.verify_count.update_one(
                         {},
                         {'$inc': {'verification_count': 1}, '$set': {'expiration_time': expiration_time, 'user_ids': user_ids}},
@@ -184,8 +181,8 @@ class Database:
                     await self.verify_count.create_index('expiration_time', expireAfterSeconds=0)
                     return userIDList.get('verification_count', 0) + 1
             else:
-                current_time_utc = datetime.now(datetime.timezone.utc)
-                expiration_time = datetime.combine((current_time_utc + datetime.timedelta(days=1)).date(), datetime.time(0, 0))
+                current_time_utc = datetime.datetime.now(datetime.timezone.utc)
+                expiration_time = datetime.datetime.combine((current_time_utc + datetime.timedelta(days=1)).date(), datetime.time(0, 0))
                 await self.verify_count.insert_one({'verification_count': 1, 'expiration_time': expiration_time, 'user_ids': [userID]})
                 await self.verify_count.create_index('expiration_time', expireAfterSeconds=0)
                 return 1

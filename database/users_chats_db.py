@@ -172,7 +172,7 @@ class Database:
                 else:
                     user_ids = userIDList.get('user_ids', []) + [userID]
                     current_time_utc = datetime.datetime.now(datetime.timezone.utc)
-                    expiration_time = datetime.datetime.combine((current_time_utc + datetime.timedeltatimedelta(days=1)).date(), datetime.time(0, 0))
+                    expiration_time = datetime.datetime.combine((current_time_utc + datetime.timedelta(days=1)).date(), datetime.time(0, 0))
                     await self.verify_count.update_one(
                         {},
                         {'$inc': {'verification_count': 1}, '$set': {'expiration_time': expiration_time, 'user_ids': user_ids}},
@@ -189,7 +189,6 @@ class Database:
         except Exception as e:
             print(f"Error: {e}")
             return str(e)
-
 
 
 db = Database(DATABASE_URI, DATABASE_NAME)

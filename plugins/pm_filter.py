@@ -39,7 +39,6 @@ SPELL_CHECK = {}
 CAP = {}
 REACTIONS = ["🔥", "❤️", "😍", "👍", "❤", "🔥", "🥰", "😁", "🤔", "🤯", "😱", "🤬", "😢", "🤩", "🤮", "🙏", "🕊", "🤡", "❤‍🔥", "🌚", "💯", "🤣", "💋", "😈", "👨‍💻", "👀", "🙈", "😇", "😨", "🤗", "🫡", "😘", "🙊", "😎", "😡"]
 @Client.on_callback_query(filters.regex(r"^streaming"))
-@Client.on_callback_query(filters.regex(r"^streaming"))
 async def stream_download(bot, query):
     file_id = query.data.split('#', 1)[1]
     msg = await bot.send_cached_media(
@@ -64,7 +63,7 @@ async def stream_download(bot, query):
             reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton("📥 ᴅᴏᴡɴʟᴏᴀᴅ 📥", url=download),
                     InlineKeyboardButton("🖥️ ꜱᴛʀᴇᴇᴍ 🖥️", url=online)]]))
-        await query.answer("ऐ दोस्त एक काम कर 🙋\nअपने दोस्त को Invite कर 💁\n\nऔर Streaming इंज्वॉय कर 😛", show_alert=True)
+        await query.answer("hello", show_alert=True)
         await query.edit_message_reply_markup(
             reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton("📥 ᴅᴏᴡɴʟᴏᴀᴅ 📥", url=download),

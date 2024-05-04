@@ -630,7 +630,7 @@ async def advantage_spoll_choker(bot, query):
     _, user, movie_ = query.data.split('#')
     movies = SPELL_CHECK.get(query.message.reply_to_message.id)
     if not movies:
-        return await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name), show_alert=True)
+        return #await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name), show_alert=True)
     if int(user) != 0 and query.from_user.id != int(user):
         return await query.answer(script.ALRT_TXT.format(query.from_user.first_name), show_alert=True)
     if movie_ == "close_spellcheck":
@@ -651,9 +651,24 @@ async def advantage_spoll_choker(bot, query):
                 reqstr1 = query.from_user.id if query.from_user else 0
                 reqstr = await bot.get_users(reqstr1)
                 if NO_RESULTS_MSG:
-                    await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(query.message.chat.title, query.message.chat.id, reqstr.mention, movie)))
+                    safari = [[
+                        InlineKeyboardButton('Not Release 📅', callback_data=f"not_release:{reqstr1}:{movie}"),
+                    ],[
+                        InlineKeyboardButton('Already Available🕵️', callback_data=f"already_available:{reqstr1}:{movie}"),
+                        InlineKeyboardButton('Not Available🙅', callback_data=f"not_available:{reqstr1}:{movie}")
+                    ],[
+                        InlineKeyboardButton('Uploaded Done✅', callback_data=f"uploaded:{reqstr1}:{movie}")
+                    ],[
+                        InlineKeyboardButton('Series Error🙅', callback_data=f"series:{reqstr1}:{movie}"),
+                        InlineKeyboardButton('Spell Error✍️', callback_data=f"spelling_error:{reqstr1}:{movie}")
+                    ],[
+                        InlineKeyboardButton('⁉️ Close ⁉️', callback_data=f"close_data")
+                    ]]
+                    reply_markup = InlineKeyboardMarkup(safari)
+                    total=await bot.get_chat_members_count(query.message.chat.id)
+                    await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(query.message.chat.title, query.message.chat.id, total, temp.B_NAME, reqstr.mention, movie)), reply_markup=InlineKeyboardMarkup(safari))
                 k = await query.message.edit(script.MVE_NT_FND)
-                await asyncio.sleep(10)
+                await asyncio.sleep(15)
                 await k.delete()
 
 @Client.on_callback_query()

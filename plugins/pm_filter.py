@@ -63,7 +63,7 @@ async def stream_download(bot, query):
             reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton("📥 ᴅᴏᴡɴʟᴏᴀᴅ 📥", url=download),
                     InlineKeyboardButton("🖥️ ꜱᴛʀᴇᴇᴍ 🖥️", url=online)]]))
-        await query.answer("hello", show_alert=True)
+        await query.answer("ऐ दोस्त एक काम कर 🙋\nअपने दोस्त को Invite कर 💁\n\nऔर Streaming इंज्वॉय कर 😛", show_alert=True)
         await query.edit_message_reply_markup(
             reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton("📥 ᴅᴏᴡɴʟᴏᴀᴅ 📥", url=download),
@@ -107,7 +107,7 @@ async def pm_text(bot, message):
     user_id = message.from_user.id
     if content.startswith("/") or content.startswith("#"): return  # ignore commands and hashtags
     if user_id in ADMINS: return # ignore admins
-    await message.reply_text("<b>go send here@badal6667rau</b>")
+    await message.reply_text("<b>ए दोस्त यहां मूवी नही मिलेगा ग्रुप में मांगो\nGo and send here 👉, @movie_request_group_69</b>")
     await bot.send_message(
         chat_id=LOG_CHANNEL,
         text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"

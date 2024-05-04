@@ -630,7 +630,7 @@ async def advantage_spoll_choker(bot, query):
     _, user, movie_ = query.data.split('#')
     movies = SPELL_CHECK.get(query.message.reply_to_message.id)
     if not movies:
-        return #await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name), show_alert=True)
+        return await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name), show_alert=True)
     if int(user) != 0 and query.from_user.id != int(user):
         return await query.answer(script.ALRT_TXT.format(query.from_user.first_name), show_alert=True)
     if movie_ == "close_spellcheck":
@@ -651,10 +651,9 @@ async def advantage_spoll_choker(bot, query):
                 reqstr1 = query.from_user.id if query.from_user else 0
                 reqstr = await bot.get_users(reqstr1)
                 if NO_RESULTS_MSG:
-                    total=await bot.get_chat_members_count(query.message.chat.id)
-                    await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(query.message.chat.title, query.message.chat.id, total, temp.B_NAME, reqstr.mention, movie)))
+                    await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(query.message.chat.title, query.message.chat.id, reqstr.mention, movie)))
                 k = await query.message.edit(script.MVE_NT_FND)
-                await asyncio.sleep(60)
+                await asyncio.sleep(10)
                 await k.delete()
 
 @Client.on_callback_query()
@@ -1245,98 +1244,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
         await query.answer(MSG_ALRT)
-
-    elif query.data.startswith("not_available"):
-        _, user_id, movie = data.split(":")
-        try:
-            safari = [[
-                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
-                    ]]
-            reply_markup = InlineKeyboardMarkup(safari)
-            await client.send_message(int(user_id), f"माफ़ करें आपने जो <b>{movie}</b> नाम की फिल्म मांगी थीं वो हमे नहीं मिली 😟ं, हो सकता है आगे चल कर मिल जाएं")
-            msg=await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Nᴏᴛ Aᴠᴀɪʟᴀʙʟᴇ 😒.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
-            await asyncio.sleep(10)
-            await msg.delete()
-        except Exception as e:
-            print(e)  # print the error message
-            await query.answer(f"☣something went wrong\n\n{e}", show_alert=True)
-            return
-    elif data.startswith("already_available"):
-        _, user_id, movie = data.split(":")
-        try:
-            safari = [[
-                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
-                    ]]
-            reply_markup = InlineKeyboardMarkup(safari)
-            await client.send_message(int(user_id), f"आपने जो <b>{movie}</b> फिल्म मांगी थी वो पहले से ही ग्रुप में अवेलबल हैं\n\n📌 कृपया नाम सही से लिखें |\सिर्फ फिल्म का नाम और वर्ष लिखें उसके आगे आगे कुछ ना लिखें\n\nजैसे  👉 <code>Shaitaan 2024</code>\n\nसीरीज फॉर्मेट 👉 <code>Money Heist S01E01</code> | <code>S01 E01</code>\n\nग्रुप 👉 <a href={GRP_LNK}>Rᴇǫ Gʀᴏᴜᴘ</a>")
-            msg=await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Already Aᴠᴀɪʟᴀʙʟᴇ 🤩.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
-            await asyncio.sleep(10)
-            await msg.delete()
-        except Exception as e:
-            print(e)  # print the error message
-            await query.answer(f"☣something went wrong\n\n{e}", show_alert=True)
-            return
-    elif data.startswith("uploaded"):
-        _, user_id, movie = data.split(":")
-        try:
-            safari = [[
-                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
-                    ]]
-            reply_markup = InlineKeyboardMarkup(safari)
-            await client.send_message(int(user_id), f"आपने जो <b><code>{movie}</code></b> फिल्म मांगी थी वो अपलोड कर दी गईं हैं\n\nअब आपको ग्रुप में फिल्म मिल जायेगी 👉 <a href={GRP_LNK}>Rᴇǫ Gʀᴏᴜᴘ</a>")
-            msg=await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Uᴘʟᴏᴀᴅᴇᴅ 🎊.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
-            await asyncio.sleep(10)
-            await msg.delete()
-        except Exception as e:
-            print(e)  # print the error message
-            await query.answer(f"☣something went wrong\n\n{e}", show_alert=True)
-            return
-    elif data.startswith("not_release"):
-        _, user_id, movie = data.split(":")
-        try:
-            safari = [[
-                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
-                    ]]
-            reply_markup = InlineKeyboardMarkup(safari)
-            await client.send_message(int(user_id), f"आपने जो <b>{movie}</b> फिल्म मांगी है वो अभी 📅 रिलीज नही हुई हैं\nजिस दिन फिल्म रिलीज होगी उस दिन, साम तक मिल जायेगी\n\n📌 कृपया रिलीज डेट 📅 से पहले ना मांगें")
-            msg=await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Not Release 🙅.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
-            await asyncio.sleep(10)
-            await msg.delete()
-        except Exception as e:
-            print(e)  # print the error message
-            await query.answer(f"☣something went wrong\n\n{e}", show_alert=True)
-            return
-    elif data.startswith("spelling_error"):
-        _, user_id, movie = data.split(":")
-        try:
-            safari = [[
-                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
-                    ]]
-            reply_markup = InlineKeyboardMarkup(safari)
-            await client.send_message(int(user_id), f"<b>{movie}</b> ये नाम गलत है\nआपको सिर्फ मूवी/सीरीज का नाम और वर्ष लिखना है\n\nकुछ इस इस तरह से 👉 Sʜᴀɪᴛᴀᴀɴ 𝟸𝟶𝟸𝟺\n\nसीरीज फॉर्मेट 👉 Mᴏɴᴇʏ Hᴇɪꜱᴛ ꜱ𝟶𝟺ᴇ𝟶𝟷 | ꜱ𝟶𝟺 ᴇ𝟶𝟷\n\nग्रुप 👉 <a href={GRP_LNK}>Rᴇǫ Gʀᴏᴜᴘ</a>")
-            msg=await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Sᴘᴇʟʟɪɴɢ Eʀʀᴏʀ 🕵️.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
-            await asyncio.sleep(10)
-            await msg.delete()
-        except Exception as e:
-            print(e)  # print the error message
-            await query.answer(f"☣something went wrong\n\n{e}", show_alert=True)
-            return
-    elif data.startswith("series"):
-        _, user_id, movie = data.split(":")
-        try:
-            safari = [[
-                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
-                    ]]
-            reply_markup = InlineKeyboardMarkup(safari)
-            await client.send_message(int(user_id), f"आपने सीरीज का नाम गलत तरीके से लिखीं हैं\n{movie}\n\nआपको सीरीज का नाम इस तरह से नहीं लिखनी है\n\nआपको सीरीज का नाम इस तरह से लिखनी है\n<code>Money Heist S01E03</code> 👈\n<code>Money Heist S01 E03</code> 👈\n\nग्रुप 👉 <a href={GRP_LNK}>Rᴇǫ Gʀᴏᴜᴘ</a>")
-            msg=await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Series Eʀʀᴏʀ 🕵️.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
-            await asyncio.sleep(10)
-            await msg.delete()
-        except Exception as e:
-            print(e)  # print the error message
-            await query.answer(f"☣something went wrong\n\n{e}", show_alert=True)
-            return    
-
+        
     elif query.data == "filters":
         buttons = [[
             InlineKeyboardButton('Mᴀɴᴜᴀʟ FIʟᴛᴇʀ', callback_data='manuelfilter'),
@@ -1910,7 +1818,7 @@ async def advantage_spell_chok(client, msg):
     settings = await get_settings(msg.chat.id)
     find = mv_rqst.split(" ")
     query = ""
-    removes = ["in","upload", "series", "full", "horror", "thriller", "mystery", "print", "file"]
+    removes = ["in","upload", "series", "full", "horror", "thriller", "mystery", "print", "file", "send", "chahiye", "chiye", "movi", "movie", "bhejo", "dijiye", "jaldi", "hd", "bollywood", "hollywood", "south", "karo"]
     for x in find:
         if x in removes:
             continue
@@ -1925,15 +1833,16 @@ async def advantage_spell_chok(client, msg):
         if not g_s:
             reqst_gle = query.replace(" ", "+")
             button = [[
-                       InlineKeyboardButton("📝 ʀᴇǫᴜᴇꜱᴛ ʜᴇʀᴇ", url=f"https://t.me/")
+                       InlineKeyboardButton("Gᴏᴏɢʟᴇ", url=f"https://www.google.com/search?q={reqst_gle}")
             ]]
             if NO_RESULTS_MSG:
                 await client.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(reqstr.id, reqstr.mention, mv_rqst)))
-            k = await msg.reply_text(
-                text=script.I_CUDNT.format(mv_rqst),
+            k = await msg.reply_photo(
+                photo=SPELL_IMG, 
+                caption=script.I_CUDNT.format(mv_rqst),
                 reply_markup=InlineKeyboardMarkup(button)
             )
-            await asyncio.sleep(60)
+            await asyncio.sleep(30)
             await k.delete()
             return
         regex = re.compile(r".*(imdb|wikipedia).*", re.IGNORECASE)  # look for imdb / wiki results
@@ -1962,15 +1871,16 @@ async def advantage_spell_chok(client, msg):
         if not movielist:
             reqst_gle = query.replace(" ", "+")
             button = [[
-                       InlineKeyboardButton("📝 ʀᴇǫᴜᴇꜱᴛ ʜᴇʀᴇ", url=f"https://t.me/")
+                       InlineKeyboardButton("Gᴏᴏɢʟᴇ", url=f"https://www.google.com/search?q={reqst_gle}")
             ]]
             if NO_RESULTS_MSG:
                 await client.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(reqstr.id, reqstr.mention, mv_rqst)))
-            k = await msg.reply_text(
-                text=script.I_CUDNT.format(mv_rqst),
+            k = await msg.reply_photo(
+                photo=SPELL_IMG, 
+                caption=script.I_CUDNT.format(mv_rqst),
                 reply_markup=InlineKeyboardMarkup(button)
             )
-            await asyncio.sleep(60)
+            await asyncio.sleep(30)
             await k.delete()
             return
         SPELL_CHECK[mv_id] = movielist
@@ -1979,23 +1889,24 @@ async def advantage_spell_chok(client, msg):
                 text=movie.strip(),
                 callback_data=f"spolling#{reqstr1}#{k}",
             )
-        ] for k, movie in enumerate(movielist[:5])] #Show Suggestion upto 5
-        btn.append([InlineKeyboardButton(text="↭ ᴄʟᴏꜱᴇ ↭", callback_data=f'spol#{reqstr1}#close_spellcheck')])
-        spell_check_del = await msg.reply_text(
-            text=script.CUDNT_FND.format(mv_rqst),
-            reply_markup=InlineKeyboardMarkup(btn),
-            reply_to_message_id=msg.id
+        ] for k, movie in enumerate(movielist)]
+        btn.append([InlineKeyboardButton(text="Close", callback_data=f'spol#{reqstr1}#close_spellcheck')])
+        spell_check_del = await msg.reply_photo(
+            photo=(SPELL_IMG),
+            caption=(script.CUDNT_FND.format(mv_rqst)),
+            reply_markup=InlineKeyboardMarkup(btn)
         )
         try:
             if settings['auto_delete']:
                 await asyncio.sleep(30)
                 await spell_check_del.delete()
+                await msg.delete()
         except KeyError:
                 grpid = await active_connection(str(msg.from_user.id))
                 await save_group_settings(grpid, 'auto_delete', True)
                 settings = await get_settings(msg.chat.id)
                 if settings['auto_delete']:
-                    await asyncio.sleep(30)
+                    await asyncio.sleep(60)
                     await spell_check_del.delete()
     except:
         try:
@@ -2004,30 +1915,32 @@ async def advantage_spell_chok(client, msg):
             logger.exception(e)
             reqst_gle = mv_rqst.replace(" ", "+")
             button = [[
-                       InlineKeyboardButton("📝 ʀᴇǫᴜᴇꜱᴛ ʜᴇʀᴇ", url=f"https://t.me/")
+                       InlineKeyboardButton("Gᴏᴏɢʟᴇ", url=f"https://www.google.com/search?q={reqst_gle}")
             ]]
             if NO_RESULTS_MSG:
                 await client.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(reqstr.id, reqstr.mention, mv_rqst)))
-            k = await msg.reply_text(
-                text=script.I_CUDNT.format(mv_rqst),
+            k = await msg.reply_photo(
+                photo=SPELL_IMG, 
+                caption=script.I_CUDNT.format(mv_rqst),
                 reply_markup=InlineKeyboardMarkup(button)
             )
-            await asyncio.sleep(60)
+            await asyncio.sleep(30)
             await k.delete()
             return
         movielist = []
         if not movies:
             reqst_gle = mv_rqst.replace(" ", "+")
             button = [[
-                       InlineKeyboardButton("📝 ʀᴇǫᴜᴇꜱᴛ ʜᴇʀᴇ", url=f"https://t.me/")
+                       InlineKeyboardButton("Gᴏᴏɢʟᴇ", url=f"https://www.google.com/search?q={reqst_gle}")
             ]]
             if NO_RESULTS_MSG:
                 await client.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(reqstr.id, reqstr.mention, mv_rqst)))
-            k = await msg.reply_text(
-                text=script.I_CUDNT.format(mv_rqst),
+            k = await msg.reply_photo(
+                photo=SPELL_IMG, 
+                caption=script.I_CUDNT.format(mv_rqst),
                 reply_markup=InlineKeyboardMarkup(button)
             )
-            await asyncio.sleep(60)
+            await asyncio.sleep(30)
             await k.delete()
             return
         movielist += [movie.get('title') for movie in movies]
@@ -2042,21 +1955,23 @@ async def advantage_spell_chok(client, msg):
             ]
             for k, movie_name in enumerate(movielist)
         ]
-        btn.append([InlineKeyboardButton(text="↭ ᴄʟᴏꜱᴇ ↭", callback_data=f'spol#{reqstr1}#close_spellcheck')])
-        spell_check_del = await msg.reply_text(
-            text=script.CUDNT_FND.format(mv_rqst),
+        btn.append([InlineKeyboardButton(text="Close", callback_data=f'spol#{reqstr1}#close_spellcheck')])
+        spell_check_del = await msg.reply_photo(
+            photo=(SPELL_IMG),
+            caption=(script.CUDNT_FND.format(mv_rqst)),
             reply_markup=InlineKeyboardMarkup(btn)
         )
         try:
             if settings['auto_delete']:
                 await asyncio.sleep(30)
                 await spell_check_del.delete()
+                await msg.delete()
         except KeyError:
                 grpid = await active_connection(str(msg.from_user.id))
                 await save_group_settings(grpid, 'auto_delete', True)
                 settings = await get_settings(msg.chat.id)
                 if settings['auto_delete']:
-                    await asyncio.sleep(10)
+                    await asyncio.sleep(600)
                     await spell_check_del.delete()
 
 async def manual_filters(client, message, text=False):

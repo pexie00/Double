@@ -72,7 +72,7 @@ async def stream_download(bot, query):
                 ],[
                     InlineKeyboardButton('Update letest content', url='https://t.me/hdlinks4uu')]]))
                         
-@Client.on_message(filters.group | filters.private & filters.text & filters.incoming)
+@Client.on_message(filters.private & filters.text & filters.incoming)
 async def give_filter(client, message):
     await message.react(emoji=random.choice(REACTIONS))
     if message.chat.id != SUPPORT_CHAT_ID:

@@ -1989,7 +1989,7 @@ async def advantage_spell_chok(client, msg):
     )
     try:
         if settings['auto_delete']:
-            await asyncio.sleep(15)
+            await asyncio.sleep(30)
             await spell_check_del.delete()
             await msg.delete()
     except KeyError:

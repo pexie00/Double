@@ -1750,7 +1750,8 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"<b>found {search} ✅</b>"
+        user = message.from_user.first_name
+        cap = f"<b>I found {search} | {user} ✅</b>"
     CAP[search] = cap
     if imdb and imdb.get('poster'):
         try:

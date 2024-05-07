@@ -1749,7 +1749,7 @@ async def auto_filter(client, msg, spoll=False):
             url=imdb['url'],
             **locals()
         )
-    else
+    else:
         cap = f"<b>found {search} ✅</b>"
     CAP[search] = cap
     if imdb and imdb.get('poster'):

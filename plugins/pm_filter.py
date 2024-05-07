@@ -189,6 +189,7 @@ async def next_page(bot, query):
                 )
             elif off_set is None:
                 btn.append([InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(f"{math.ceil(int(offset)/10)+1} / {math.ceil(total/10)}", callback_data="pages"), InlineKeyboardButton("𝐍𝐄𝐗𝐓 ➪", callback_data=f"next_{req}_{key}_{n_offset}")])
+                files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
             else:
                 btn.append(
                     [
@@ -197,6 +198,7 @@ async def next_page(bot, query):
                         InlineKeyboardButton("𝐍𝐄𝐗𝐓 ➪", callback_data=f"next_{req}_{key}_{n_offset}")
                     ],
                 )
+                files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
         else:
             if 0 < offset <= int(MAX_B_TN):
                 off_set = 0
@@ -210,6 +212,7 @@ async def next_page(bot, query):
                 )
             elif off_set is None:
                 btn.append([InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(f"{math.ceil(int(offset)/int(MAX_B_TN))+1} / {math.ceil(total/int(MAX_B_TN))}", callback_data="pages"), InlineKeyboardButton("𝐍𝐄𝐗𝐓 ➪", callback_data=f"next_{req}_{key}_{n_offset}")])
+                files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
             else:
                 btn.append(
                     [
@@ -218,6 +221,7 @@ async def next_page(bot, query):
                         InlineKeyboardButton("𝐍𝐄𝐗𝐓 ➪", callback_data=f"next_{req}_{key}_{n_offset}")
                     ],
                 )
+                files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
     except KeyError:
         await save_group_settings(query.message.chat.id, 'max_btn', True)
         if 0 < offset <= 10:
@@ -232,6 +236,7 @@ async def next_page(bot, query):
             )
         elif off_set is None:
             btn.append([InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(f"{math.ceil(int(offset)/10)+1} / {math.ceil(total/10)}", callback_data="pages"), InlineKeyboardButton("𝐍𝐄𝐗𝐓 ➪", callback_data=f"next_{req}_{key}_{n_offset}")])
+            files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
         else:
             btn.append(
                 [
@@ -240,6 +245,7 @@ async def next_page(bot, query):
                     InlineKeyboardButton("𝐍𝐄𝐗𝐓 ➪", callback_data=f"next_{req}_{key}_{n_offset}")
                 ],
             )
+            files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
     btn.insert(0, [
         InlineKeyboardButton("Lᴀɴɢᴜᴀɢᴇ", callback_data=f"select_lang#{req}"),
         InlineKeyboardButton("Qᴜᴀʟɪᴛʏꜱ", callback_data=f"lusi_films#{req}"),
@@ -324,16 +330,19 @@ async def language_check(bot, query):
                     btn.append(
                         [InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝐍𝐄𝐗𝐓 ➪",callback_data=f"next_{req}_{key}_{offset}")]
                     )
+                    files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
 
                 else:
                     btn.append(
                         [InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/int(MAX_B_TN))}",callback_data="pages"), InlineKeyboardButton(text="𝐍𝐄𝐗𝐓 ➪",callback_data=f"next_{req}_{key}_{offset}")]
                     )
+                    files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
             except KeyError:
                 await save_group_settings(query.message.chat.id, 'max_btn', True)
                 btn.append(
                     [InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝐍𝐄𝐗𝐓 ➪",callback_data=f"next_{req}_{key}_{offset}")]
                 )
+                files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
         else:
             btn.append(
                 [InlineKeyboardButton(text="𝐍𝐎 𝐌𝐎𝐑𝐄 𝐏𝐀𝐆𝐄𝐒 𝐀𝐕𝐀𝐈𝐋𝐀𝐁𝐋𝐄",callback_data="pages")]
@@ -450,16 +459,19 @@ async def quality_check(bot, query):
                     btn.append(
                         [InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝐍𝐄𝐗𝐓 ➪",callback_data=f"next_{req}_{key}_{offset}")]
                     )
+                    files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
 
                 else:
                     btn.append(
                         [InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/int(MAX_B_TN))}",callback_data="pages"), InlineKeyboardButton(text="𝐍𝐄𝐗𝐓 ➪",callback_data=f"next_{req}_{key}_{offset}")]
                     )
+                    files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
             except KeyError:
                 await save_group_settings(query.message.chat.id, 'max_btn', True)
                 btn.append(
                     [InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝐍𝐄𝐗𝐓 ➪",callback_data=f"next_{req}_{key}_{offset}")]
                 )
+                files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
         else:
             btn.append(
                 [InlineKeyboardButton(text="𝐍𝐎 𝐌𝐎𝐑𝐄 𝐏𝐀𝐆𝐄𝐒 𝐀𝐕𝐀𝐈𝐋𝐀𝐁𝐋𝐄",callback_data="pages")]
@@ -569,16 +581,19 @@ async def seasons_check(bot, query):
                     btn.append(
                         [InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝐍𝐄𝐗𝐓 ➪",callback_data=f"next_{req}_{key}_{offset}")]
                     )
+                    files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
 
                 else:
                     btn.append(
                         [InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/int(MAX_B_TN))}",callback_data="pages"), InlineKeyboardButton(text="𝐍𝐄𝐗𝐓 ➪",callback_data=f"next_{req}_{key}_{offset}")]
                     )
+                    files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
             except KeyError:
                 await save_group_settings(query.message.chat.id, 'max_btn', True)
                 btn.append(
                     [InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝐍𝐄𝐗𝐓 ➪",callback_data=f"next_{req}_{key}_{offset}")]
                 )
+                files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
         else:
             btn.append(
                 [InlineKeyboardButton(text="𝐍𝐎 𝐌𝐎𝐑𝐄 𝐏𝐀𝐆𝐄𝐒 𝐀𝐕𝐀𝐈𝐋𝐀𝐁𝐋𝐄",callback_data="pages")]
@@ -1706,11 +1721,13 @@ async def auto_filter(client, msg, spoll=False):
                 btn.append(
                     [InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/int(MAX_B_TN))}",callback_data="pages"), InlineKeyboardButton(text="𝐍𝐄𝐗𝐓 ➪",callback_data=f"next_{req}_{key}_{offset}")]
                 )
+            files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
         except KeyError:
             await save_group_settings(message.chat.id, 'max_btn', True)
             btn.append(
                 [InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝐍𝐄𝐗𝐓 ➪",callback_data=f"next_{req}_{key}_{offset}")]
             )
+            files_link += "\n\n<b>𝐶𝑙𝑖𝑐𝑘 𝑜𝑛 𝑛𝑒𝑥𝑡 𝑝𝑎𝑔𝑒 𝑡𝑜 𝑠𝑒𝑒 𝑚𝑜𝑟𝑒 𝑟𝑒𝑠𝑢𝑙𝑡𝑠</b>"
     else:
         btn.append(
             [InlineKeyboardButton(text="𝐍𝐎 𝐌𝐎𝐑𝐄 𝐏𝐀𝐆𝐄𝐒 𝐀𝐕𝐀𝐈𝐋𝐀𝐁𝐋𝐄",callback_data="pages")]

@@ -725,6 +725,39 @@ async def save_template(client, message):
     await save_group_settings(grp_id, 'template', template)
     await sts.edit(f"Sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ᴛᴇᴍᴘʟᴀᴛᴇ ғᴏʀ {title} ᴛᴏ:\n\n{template}")
 
+@Client.on_message((filters.command(["request", "Request"]) | filters.regex("#request") | filters.regex("#Request")))
+#@Client.on_message(filters.command('request') & filters.incoming & filters.text)
+async def requests(client, message):
+    search = message.text
+    requested_movie = search.replace("/request", "").replace("/Request", "").replace("#Request", "").replace("#request", "").strip()
+    files, offset, total_results = await get_search_results(requested_movie.lower(), offset=0, filter=True)
+    user_id = message.from_user.id
+    if not requested_movie:
+        await message.reply_text("🙅 (फिल्म रिक्वेस्ट करने के लिए कृपया फिल्म का नाम और साल साथ में लिखें\nकुछ इस तरह 👇\n<code>/request Pushpa 2021</code>")
+        return
+    if files:
+        await message.reply_text(f"Hᴇʏ {message.from_user.mention},\n\nʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛ ɪꜱ ᴀʟʀᴇᴀᴅʏ ᴀᴠᴀɪʟᴀʙʟᴇ ✅\n\n📂 ꜰɪʟᴇꜱ ꜰᴏᴜɴᴅ : {total_results}\n🔍 ꜱᴇᴀʀᴄʜ : <code>{requested_movie}</code>\n\n‼️ ᴛʜɪs ɪs ᴀ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ sᴏ ᴛʜᴀᴛ ʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ...", reply_to_message_id=message.id,
+        reply_markup=InlineKeyboardMarkup([[
+            InlineKeyboardButton('📝 ꜱᴇᴀʀᴄʜ ʜᴇʀᴇ : 👇', url=GRP_LNK)]]))
+    else:    
+        await message.reply_text(text=f"✅ आपकी फिल्म <b> {requested_movie} </b> हमारे एडमिन के पास भेज दिया गया है.\n\n🚀 जैसे ही फिल्म अपलोड होती हैं हम आपको मैसेज देंगे.\n\n📌 ध्यान दे - एडमिन अपने काम में व्यस्त हो सकते है इसलिए फिल्म अपलोड होने में टाइम लग सकता हैं")
+        await client.send_message(LOG_CHANNEL,f"📝 #REQUESTED_CONTENT 📝\n\nʙᴏᴛ - {temp.B_NAME}\nɴᴀᴍᴇ - {message.from_user.mention} (<code>{message.from_user.id}</code>)\nRᴇǫᴜᴇꜱᴛ - <code>{requested_movie}</code>",
+        reply_markup=InlineKeyboardMarkup(
+            [[
+                InlineKeyboardButton('Not Release📅', callback_data=f"not_release:{user_id}:{requested_movie}"),
+            ],[
+                InlineKeyboardButton('Already Available🕵️', callback_data=f"already_available:{user_id}:{requested_movie}"),
+                InlineKeyboardButton('Not Available🙅', callback_data=f"not_available:{user_id}:{requested_movie}")
+            ],[
+                InlineKeyboardButton('Uploaded Done✅', callback_data=f"uploaded:{user_id}:{requested_movie}")
+            ],[
+                InlineKeyboardButton('Series Msg📝', callback_data=f"series:{user_id}:{requested_movie}"),
+                InlineKeyboardButton('Spell Msg✍️', callback_data=f"spelling_error:{user_id}:{requested_movie}")
+            ],[
+                InlineKeyboardButton('⁉️ Close ⁉️', callback_data=f"close_data")]
+            ]))
+        
+
 @Client.on_message(filters.command("send") & filters.user(ADMINS))
 async def send_msg(bot, message):
     if message.reply_to_message:

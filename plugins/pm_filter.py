@@ -644,7 +644,7 @@ async def advantage_spoll_choker(bot, query):
     _, user, movie_ = query.data.split('#')
     movies = SPELL_CHECK.get(query.message.reply_to_message.id)
     if not movies:
-        return await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name), show_alert=True)
+        return #await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name), show_alert=True)
     if int(user) != 0 and query.from_user.id != int(user):
         return await query.answer(script.ALRT_TXT.format(query.from_user.first_name), show_alert=True)
     if movie_ == "close_spellcheck":
@@ -665,13 +665,29 @@ async def advantage_spoll_choker(bot, query):
                 reqstr1 = query.from_user.id if query.from_user else 0
                 reqstr = await bot.get_users(reqstr1)
                 if NO_RESULTS_MSG:
-                    await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(query.message.chat.title, query.message.chat.id, reqstr.mention, movie)))
+                    safari = [[
+                        InlineKeyboardButton('Not Release 📅', callback_data=f"not_release:{reqstr1}:{movie}"),
+                    ],[
+                        InlineKeyboardButton('Already Available🕵️', callback_data=f"already_available:{reqstr1}:{movie}"),
+                        InlineKeyboardButton('Not Available🙅', callback_data=f"not_available:{reqstr1}:{movie}")
+                    ],[
+                        InlineKeyboardButton('Uploaded Done✅', callback_data=f"uploaded:{reqstr1}:{movie}")
+                    ],[
+                        InlineKeyboardButton('Series Error🙅', callback_data=f"series:{reqstr1}:{movie}"),
+                        InlineKeyboardButton('Spell Error✍️', callback_data=f"spelling_error:{reqstr1}:{movie}")
+                    ],[
+                        InlineKeyboardButton('⁉️ Close ⁉️', callback_data=f"close_data")
+                    ]]
+                    reply_markup = InlineKeyboardMarkup(safari)
+                    total=await bot.get_chat_members_count(query.message.chat.id)
+                    await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(query.message.chat.title, query.message.chat.id, total, temp.B_NAME, reqstr.mention, movie)), reply_markup=InlineKeyboardMarkup(safari))
                 k = await query.message.edit(script.MVE_NT_FND)
-                await asyncio.sleep(10)
+                await asyncio.sleep(15)
                 await k.delete()
 
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
+    data = query.data
     if query.data == "close_data":
         await query.message.delete()
     elif query.data == "gfiltersdeleteallconfirm":
@@ -1258,6 +1274,98 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
         await query.answer(MSG_ALRT)
+
+    elif query.data.startswith("not_available"):
+        _, user_id, movie = data.split(":")
+        try:
+            safari = [[
+                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
+                    ]]
+            reply_markup = InlineKeyboardMarkup(safari)
+            await client.send_message(int(user_id), f"𝑆𝑜𝑟𝑟𝑦, 𝑤𝑒 𝑐𝑜𝑢𝑙𝑑𝑛'𝑡 𝑓𝑖𝑛𝑑 𝑡ℎ𝑒 𝑚𝑜𝑣𝑖𝑒 𝑛𝑎𝑚𝑒 <b>{movie}</b> 𝑡ℎ𝑎𝑡 𝑦𝑜𝑢 𝑎𝑠𝑘𝑒𝑑 𝑓𝑜𝑟, 𝑚𝑎𝑦𝑏𝑒 𝑤𝑒 𝑤𝑖𝑙𝑙 𝑔𝑒𝑡 𝑖𝑡 𝑙𝑎𝑡𝑒𝑟.")
+            msg=await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Nᴏᴛ Aᴠᴀɪʟᴀʙʟᴇ 😒.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
+            await asyncio.sleep(10)
+            await msg.delete()
+        except Exception as e:
+            print(e)  # print the error message
+            await query.answer(f"☣something went wrong\n\n{e}", show_alert=True)
+            return
+    elif data.startswith("already_available"):
+        _, user_id, movie = data.split(":")
+        try:
+            safari = [[
+                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
+                    ]]
+            reply_markup = InlineKeyboardMarkup(safari)
+            await client.send_message(int(user_id), f"𝑇ℎ𝑒 <b>{movie}</b> 𝑚𝑜𝑣𝑖𝑒 𝑦𝑜𝑢 𝑟𝑒𝑞𝑢𝑒𝑠𝑡𝑒𝑑 𝑖𝑠 𝑎𝑙𝑟𝑒𝑎𝑑𝑦 𝑎𝑣𝑎𝑖𝑙𝑎𝑏𝑙𝑒 𝑖𝑛 𝑡ℎ𝑒 𝑔𝑟𝑜𝑢𝑝\n\n📌 𝑃𝑙𝑒𝑎𝑠𝑒 𝑡𝑟𝑦 𝑡𝑜 𝑤𝑟𝑖𝑡𝑒 𝑡ℎ𝑒 𝑛𝑎𝑚𝑒 𝑐𝑜𝑟𝑟𝑒𝑐𝑡𝑙𝑦 |\𝑊𝑟𝑖𝑡𝑒 𝑜𝑛𝑙𝑦 𝑡ℎ𝑒 𝑛𝑎𝑚𝑒 𝑎𝑛𝑑 𝑦𝑒𝑎𝑟 𝑜𝑓 𝑡ℎ𝑒 𝑓𝑖𝑙𝑚, 𝑑𝑜 𝑛𝑜𝑡 𝑤𝑟𝑖𝑡𝑒 𝑎𝑛𝑦𝑡ℎ𝑖𝑛𝑔 𝑒𝑙𝑠𝑒 𝑎𝑓𝑡𝑒𝑟 𝑡ℎ𝑎𝑡.\n\n𝐿𝑖𝑘𝑒  👉 <code>Shaitaan 2024</code>\n\n𝑆𝑒𝑟𝑖𝑒𝑠 𝑓𝑜𝑟𝑚𝑎𝑡 👉 <code>Money Heist S01E01</code> | <code>S01 E01</code>\n\n𝐺𝑟𝑜𝑢𝑝 👉 <a href={GRP_LNK}>Rᴇǫ Gʀᴏᴜᴘ</a>")
+            msg=await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Already Aᴠᴀɪʟᴀʙʟᴇ 🤩.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
+            await asyncio.sleep(10)
+            await msg.delete()
+        except Exception as e:
+            print(e)  # print the error message
+            await query.answer(f"☣something went wrong\n\n{e}", show_alert=True)
+            return
+    elif data.startswith("uploaded"):
+        _, user_id, movie = data.split(":")
+        try:
+            safari = [[
+                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
+                    ]]
+            reply_markup = InlineKeyboardMarkup(safari)
+            await client.send_message(int(user_id), f"𝑇ℎ𝑒 <b><code>{movie}</code></b> 𝑚𝑜𝑣𝑖𝑒 𝑦𝑜𝑢 𝑟𝑒𝑞𝑢𝑒𝑠𝑡𝑒𝑑 ℎ𝑎𝑠 𝑏𝑒𝑒𝑛 𝑢𝑝𝑙𝑜𝑎𝑑𝑒𝑑\n\n𝑁𝑜𝑤 𝑦𝑜𝑢 𝑤𝑖𝑙𝑙 𝑔𝑒𝑡 𝑡ℎ𝑒 𝑚𝑜𝑣𝑖𝑒 𝑖𝑛 𝑡ℎ𝑒 𝑔𝑟𝑜𝑢𝑝 👉 <a href={GRP_LNK}>Rᴇǫ Gʀᴏᴜᴘ</a>")
+            msg=await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Uᴘʟᴏᴀᴅᴇᴅ 🎊.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
+            await asyncio.sleep(10)
+            await msg.delete()
+        except Exception as e:
+            print(e)  # print the error message
+            await query.answer(f"☣something went wrong\n\n{e}", show_alert=True)
+            return
+    elif data.startswith("not_release"):
+        _, user_id, movie = data.split(":")
+        try:
+            safari = [[
+                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
+                    ]]
+            reply_markup = InlineKeyboardMarkup(safari)
+            await client.send_message(int(user_id), f"𝑇ℎ𝑒 <b>{movie}</b> 𝑚𝑜𝑣𝑖𝑒 𝑦𝑜𝑢 𝑎𝑠𝑘𝑒𝑑 𝑓𝑜𝑟 ℎ𝑎𝑠 𝑛𝑜𝑡 𝑏𝑒𝑒𝑛 𝑟𝑒𝑙𝑒𝑎𝑠𝑒𝑑 𝑦𝑒𝑡 📅 𝑂𝑛 𝑡ℎ𝑒 𝑑𝑎𝑦 𝑜𝑓 𝑟𝑒𝑙𝑒𝑎𝑠𝑒, 𝑦𝑜𝑢 𝑤𝑖𝑙𝑙 𝑔𝑒𝑡 𝑖𝑡 𝑏𝑦 𝑒𝑣𝑒𝑛𝑖𝑛𝑔\n\n📌 𝑃𝑙𝑒𝑎𝑠𝑒 𝑐ℎ𝑒𝑐𝑘 𝑡ℎ𝑒 𝑟𝑒𝑙𝑒𝑎𝑠𝑒 𝑑𝑎𝑡𝑒 📅 𝐷𝑜𝑛'𝑡 𝑎𝑠𝑘 𝑓𝑖𝑖𝑟𝑠𝑡")
+            msg=await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Not Release 🙅.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
+            await asyncio.sleep(10)
+            await msg.delete()
+        except Exception as e:
+            print(e)  # print the error message
+            await query.answer(f"☣something went wrong\n\n{e}", show_alert=True)
+            return
+    elif data.startswith("spelling_error"):
+        _, user_id, movie = data.split(":")
+        try:
+            safari = [[
+                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
+                    ]]
+            reply_markup = InlineKeyboardMarkup(safari)
+            await client.send_message(int(user_id), f"<b>{movie}</b> 𝑇ℎ𝑖𝑠 𝑛𝑎𝑚𝑒 𝑖𝑠 𝑤𝑟𝑜𝑛𝑔\n𝑌𝑜𝑢 𝑗𝑢𝑠𝑡 ℎ𝑎𝑣𝑒 𝑡𝑜 𝑤𝑟𝑖𝑡𝑒 𝑡ℎ𝑒 𝑚𝑜𝑣𝑖𝑒/𝑠𝑒𝑟𝑖𝑒𝑠 𝑛𝑎𝑚𝑒 𝑎𝑛𝑑 𝑦𝑒𝑎𝑟\n\n𝑆𝑜𝑚𝑒𝑡ℎ𝑖𝑛𝑔 𝑙𝑖𝑘𝑒 𝑡ℎ𝑖𝑠 👉 Shaitaan 2024\n\n𝑆𝑒𝑟𝑖𝑒𝑠 𝑓𝑜𝑟𝑚𝑎𝑡 👉 Mirzapur s03e04 | s06 e05\n\n𝐺𝑟𝑜𝑢𝑝👉 <a href={GRP_LNK}>Rᴇǫ Gʀᴏᴜᴘ</a>")
+            msg=await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Sᴘᴇʟʟɪɴɢ Eʀʀᴏʀ 🕵️.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
+            await asyncio.sleep(10)
+            await msg.delete()
+        except Exception as e:
+            print(e)  # print the error message
+            await query.answer(f"☣something went wrong\n\n{e}", show_alert=True)
+            return
+    elif data.startswith("series"):
+        _, user_id, movie = data.split(":")
+        try:
+            safari = [[
+                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
+                    ]]
+            reply_markup = InlineKeyboardMarkup(safari)
+            await client.send_message(int(user_id), f"𝑌𝑜𝑢 ℎ𝑎𝑣𝑒 𝑤𝑟𝑖𝑡𝑡𝑒𝑛 𝑡ℎ𝑒 𝑠𝑒𝑟𝑖𝑒𝑠 𝑛𝑎𝑚𝑒 𝑖𝑛𝑐𝑜𝑟𝑟𝑒𝑐𝑡𝑙𝑦\n{movie}\n\n𝑌𝑜𝑢 𝑠ℎ𝑜𝑢𝑙𝑑 𝑛𝑜𝑡 𝑤𝑟𝑖𝑡𝑒 𝑡ℎ𝑒 𝑠𝑒𝑟𝑖𝑒𝑠 𝑛𝑎𝑚𝑒 𝑡ℎ𝑖𝑠 𝑤𝑎𝑦\n\n𝑌𝑜𝑢 𝑠ℎ𝑜𝑢𝑙𝑑 𝑤𝑟𝑖𝑡𝑒 𝑡ℎ𝑒 𝑠𝑒𝑟𝑖𝑒𝑠 𝑛𝑎𝑚𝑒 𝑡ℎ𝑖𝑠 𝑤𝑎𝑦\n<code>Money Heist S01E03</code> 👈\n<code>Money Heist S01 E03</code> 👈\n\n𝐺𝑟𝑜𝑢𝑝 👉 <a href={GRP_LNK}>Rᴇǫ Gʀᴏᴜᴘ</a>")
+            msg=await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Series Eʀʀᴏʀ 🕵️.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
+            await asyncio.sleep(10)
+            await msg.delete()
+        except Exception as e:
+            print(e)  # print the error message
+            await query.answer(f"☣something went wrong\n\n{e}", show_alert=True)
+            return
+            
         
     elif query.data == "filters":
         buttons = [[

@@ -48,19 +48,19 @@ DATABASE_NAME = environ.get('DATABASE_NAME', "cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 #this shortlink working
-IMPORT_JK_SITE = environ.get('IMPORT_JK_SITE', 'gyanilinks.com')
-IMPORT_JK_API = environ.get('IMPORT_JK_API', 'c874c4713e72bd5c5fcb3cc5e1663a0cd6b2a713')
+IMPORT_JK_SITE = environ.get('IMPORT_JK_SITE', 'krownlinks.com')
+IMPORT_JK_API = environ.get('IMPORT_JK_API', '2a757fa5b16d56e25a401e1ddd79f17e47b6ff19')
 IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), True)
 
 # Others
 IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'True')), True)
 HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/qgJFur2luoE3ZjRk/9")
-VERIFY2_URL = environ.get('VERIFY2_URL', "gyanilinks.com")
-VERIFY2_API = environ.get('VERIFY2_API', "c874c4713e72bd5c5fcb3cc5e1663a0cd6b2a713")
+VERIFY2_URL = environ.get('VERIFY2_URL', "krownlinks.com")
+VERIFY2_API = environ.get('VERIFY2_API', "2a757fa5b16d56e25a401e1ddd79f17e47b6ff19")
 
 # 👇==============this doesn't work===============👇
-SHORTLINK_URL = environ.get('SHORTLINK_URL', 'gyanilinks.com')
-SHORTLINK_API = environ.get('SHORTLINK_API', 'c874c4713e72bd5c5fcb3cc5e1663a0cd6b2a713')
+SHORTLINK_URL = environ.get('SHORTLINK_URL', 'krownlinks.com')
+SHORTLINK_API = environ.get('SHORTLINK_API', '2a757fa5b16d56e25a401e1ddd79f17e47b6ff19')
 # ☝️==============don't remove this===============☝️
 
 #stream link shortner

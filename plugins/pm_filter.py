@@ -1752,6 +1752,8 @@ async def auto_filter(client, msg, spoll=False):
             search = search.replace("s4","s04")
             search = search.replace("s5","s05")
             search = search.replace("panchayat 3","panchayat s03")
+            search = search.replace("Panchyat season 3","panchayat s03")
+            search = search.replace("Panchyat season3","panchayat s03")
             files, offset, total_results = await get_search_results(message.chat.id ,search, offset=0, filter=True)
             settings = await get_settings(message.chat.id)
             if not files:

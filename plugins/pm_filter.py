@@ -1797,7 +1797,7 @@ async def auto_filter(client, msg, spoll=False):
     elif settings["button"] and not ENABLE_SHORTLINK:
         btn = []
         for file in files:
-            files_link += f"""<b>\n\n‼️ <a href=https://t.me/{temp.U_NAME}?start=files_{file.file_id}>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('Linkz') and not x.startswith('{') and not x.startswith('Links') and not x.startswith('@') and not x.startswith('www'), file.file_name.split()))}</a></b>"""
+            files_link += f"""\n\n<spoiler>‼️ <a href=https://t.me/{temp.U_NAME}?start=files_{file.file_id}>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('Linkz') and not x.startswith('{') and not x.startswith('Links') and not x.startswith('@') and not x.startswith('www'), file.file_name.split()))}</a></spoiler>"""
     else:
         btn = [
             [
@@ -1879,7 +1879,7 @@ async def auto_filter(client, msg, spoll=False):
         )
     else:
         user = message.from_user.first_name
-        cap = f"<b>I found {search} for {user} ✅</b>"
+        cap = f"<b> {user} Click to see results ✅</b>"
     CAP[search] = cap
     if imdb and imdb.get('poster'):
         try:

@@ -1973,6 +1973,7 @@ async def advantage_spell_chok(client, msg):
             )
             await asyncio.sleep(15)
             await k.delete()
+            await msg.delete()
             return
         regex = re.compile(r".*(imdb|wikipedia).*", re.IGNORECASE)  # look for imdb / wiki results
         gs = list(filter(regex.match, g_s))
@@ -2011,6 +2012,7 @@ async def advantage_spell_chok(client, msg):
             )
             await asyncio.sleep(15)
             await k.delete()
+            await msg.delete()
             return
         SPELL_CHECK[mv_id] = movielist
         btn = [[
@@ -2055,6 +2057,7 @@ async def advantage_spell_chok(client, msg):
             )
             await asyncio.sleep(15)
             await k.delete()
+            await msg.delete()
             return
         movielist = []
         if not movies:
@@ -2071,6 +2074,7 @@ async def advantage_spell_chok(client, msg):
             )
             await asyncio.sleep(15)
             await k.delete()
+            await msg.delete()
             return
         movielist += [movie.get('title') for movie in movies]
         movielist += [f"{movie.get('title')} {movie.get('year')}" for movie in movies]
@@ -2102,6 +2106,7 @@ async def advantage_spell_chok(client, msg):
                 if settings['auto_delete']:
                     await asyncio.sleep(30)
                     await spell_check_del.delete()
+                    await msg.delete()
 
 async def manual_filters(client, message, text=False):
     settings = await get_settings(message.chat.id)

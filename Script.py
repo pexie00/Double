@@ -144,7 +144,7 @@ Nᴀᴍᴇ - {}"""
 ★ Message <code>{}</code>"""
     
     CAPTION = """
-<b>📂 Fɪʟᴇ ɴᴀᴍᴇ : </b><a href="https://t.me/hdlinks4uu">{file_name}</a>\n\nStream your file through this bot 👉: @FileStreamerv22_bot <b>
+<b>📂 Fɪʟᴇ ɴᴀᴍᴇ : </b><a href="https://t.me/hdlinks4uu">{file_name}</a>\n\nStream your file through this bot:👇<b>
 </b>"""
 
     IMDB_TEMPLATE_TXT = """

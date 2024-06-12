@@ -958,7 +958,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                             reply_markup=InlineKeyboardMarkup(
                                 [
                                 [
-                                InlineKeyboardButton("🖥️ ᴡᴀᴛᴄʜ & ᴅᴏᴡɴʟᴏᴀᴅ 📥", callback_data=f"streaming#{file_id}")
+                                InlineKeyboardButton("Start Streeming bot", url="http://t.me/filestreamerv22_bot?start=true")
                             ],[
                                 InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),
                                 InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
@@ -1031,7 +1031,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                  InlineKeyboardButton("🖥️ Wᴀᴛᴄʜ & Dᴏᴡɴʟᴏᴀᴅ 📥", callback_data=f"streaming#{file_id}")
+                  InlineKeyboardButton("Start Streeming bot", url="http://t.me/filestreamerv22_bot?start=true")
                ],[
                   InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),
                   InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)

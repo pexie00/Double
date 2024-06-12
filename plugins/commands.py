@@ -294,7 +294,7 @@ async def start(client, message):
                 reply_markup=InlineKeyboardMarkup(
                     [
                      [
-                      InlineKeyboardButton("ɢᴇɴᴇʀᴀᴛᴇ ꜱᴛʀᴇᴀᴍ ʟɪɴᴋ 🔥", callback_data=f"streaming#{file_id}")
+                      InlineKeyboardButton("Start Streeming bot", url="t.me/filestreamerv22_bot?start=true")
               
                    ]
                     ]
@@ -347,7 +347,7 @@ async def start(client, message):
         reply_markup=InlineKeyboardMarkup(
             [
              [
-             InlineKeyboardButton("ɢᴇɴᴇʀᴀᴛᴇ ꜱᴛʀᴇᴀᴍ ʟɪɴᴋ 🔥", callback_data=f"streaming#{file_id}")
+             InlineKeyboardButton("Start Streeming bot", url="t.me/filestreamerv22_bot?start=true")
               
            ],
             ]
@@ -383,49 +383,6 @@ async def channel_info(bot, message):
             f.write(text)
         await message.reply_document(file)
         os.remove(file)
-
-@Client.on_message(filters.command('ping'))
-async def ping(client, message):
-    start_time = time.monotonic()
-    msg = await message.reply("👀")
-    end_time = time.monotonic()
-    await msg.edit(f'{round((end_time - start_time) * 1000)} ms')
-
-@Client.on_message(filters.command('telegraph'))
-async def telegraph(bot, message):
-    reply_to_message = message.reply_to_message
-    if not reply_to_message:
-        return await message.reply('Reply to any photo or video.')
-    file = reply_to_message.photo or reply_to_message.video or None
-    if file is None:
-        return await message.reply('Invalid media. 😁')
-    if file.file_size >= 5242880:
-        await message.reply_text(text="Send less than 5MB 🙅")   
-        return
-    text = await message.reply_text(text="ᴘʀᴏᴄᴇssɪɴɢ....")   
-    media = await reply_to_message.download()  
-    try:
-        response = upload_file(media)
-    except Exception as e:
-        await text.edit_text(text=f"Error - {e}")
-        return    
-    try:
-        os.remove(media)
-    except:
-        pass
-    await text.edit_text(f"<b>ʏᴏᴜʀ ᴛᴇʟᴇɢʀᴀᴘʜ ʟɪɴᴋ 👇</b>\n\n<code>https://telegra.ph/{response[0]}</code></b>")
-
-
-
-
-
-@Client.on_message(filters.command('logs') & filters.user(ADMINS))
-async def log_file(bot, message):
-    """Send log file"""
-    try:
-        await message.reply_document('Logs.txt')
-    except Exception as e:
-        await message.reply(str(e))
 
 @Client.on_message(filters.command('delete') & filters.user(ADMINS))
 async def delete(bot, message):
@@ -473,35 +430,6 @@ async def delete(bot, message):
                 await msg.edit('Fɪʟᴇ ɪs sᴜᴄᴄᴇssғᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ ғʀᴏᴍ ᴅᴀᴛᴀʙᴀsᴇ')
             else:
                 await msg.edit('Fɪʟᴇ ɴᴏᴛ ғᴏᴜɴᴅ ɪɴ ᴅᴀᴛᴀʙᴀsᴇ')
-
-
-@Client.on_message(filters.command('deleteall') & filters.user(ADMINS))
-async def delete_all_index(bot, message):
-    await message.reply_text(
-        'Tʜɪs ᴡɪʟʟ ᴅᴇʟᴇᴛᴇ ᴀʟʟ ɪɴᴅᴇxᴇᴅ ғɪʟᴇs.\nDᴏ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ ?',
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Yᴇs", callback_data="autofilter_delete"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="Cᴀɴᴄᴇʟ", callback_data="close_data"
-                    )
-                ],
-            ]
-        ),
-        quote=True,
-    )
-
-
-@Client.on_callback_query(filters.regex(r'^autofilter_delete'))
-async def delete_all_index_confirm(bot, message):
-    await Media.collection.drop()
-    await message.answer("Eᴠᴇʀʏᴛʜɪɴɢ's Gᴏɴᴇ")
-    await message.message.edit('Sᴜᴄᴄᴇsғᴜʟʟʏ Dᴇʟᴇᴛᴇᴅ Aʟʟ Tʜᴇ Iɴᴅᴇxᴇᴅ Fɪʟᴇs.')
 
 
 @Client.on_message(filters.command('settings'))
@@ -680,135 +608,6 @@ async def settings(client, message):
                 reply_to_message_id=message.id
             )
 
-
-
-@Client.on_message(filters.command('set_template'))
-async def save_template(client, message):
-    sts = await message.reply("Cʜᴇᴄᴋɪɴɢ ᴛᴇᴍᴘʟᴀᴛᴇ...")
-    userid = message.from_user.id if message.from_user else None
-    if not userid:
-        return await message.reply(f"Yᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ. Usᴇ /connect {message.chat.id} ɪɴ PM")
-    chat_type = message.chat.type
-
-    if chat_type == enums.ChatType.PRIVATE:
-        grpid = await active_connection(str(userid))
-        if grpid is not None:
-            grp_id = grpid
-            try:
-                chat = await client.get_chat(grpid)
-                title = chat.title
-            except:
-                await message.reply_text("Mᴀᴋᴇ sᴜʀᴇ I'ᴍ ᴘʀᴇsᴇɴᴛ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ!!", quote=True)
-                return
-        else:
-            await message.reply_text("I'ᴍ ɴᴏᴛ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ ᴀɴʏ ɢʀᴏᴜᴘs!", quote=True)
-            return
-
-    elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        grp_id = message.chat.id
-        title = message.chat.title
-
-    else:
-        return
-
-    st = await client.get_chat_member(grp_id, userid)
-    if (
-            st.status != enums.ChatMemberStatus.ADMINISTRATOR
-            and st.status != enums.ChatMemberStatus.OWNER
-            and str(userid) not in ADMINS
-    ):
-        return
-
-    if len(message.command) < 2:
-        return await sts.edit("Nᴏ Iɴᴘᴜᴛ!!")
-    template = message.text.split(" ", 1)[1]
-    await save_group_settings(grp_id, 'template', template)
-    await sts.edit(f"Sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ᴛᴇᴍᴘʟᴀᴛᴇ ғᴏʀ {title} ᴛᴏ:\n\n{template}")
-
-@Client.on_message((filters.command(["request", "Request"]) | filters.regex("#request") | filters.regex("#Request")))
-#@Client.on_message(filters.command('request') & filters.incoming & filters.text)
-async def requests(client, message):
-    search = message.text
-    requested_movie = search.replace("/request", "").replace("/Request", "").replace("#Request", "").replace("#request", "").strip()
-    files, offset, total_results = await get_search_results(requested_movie.lower(), offset=0, filter=True)
-    user_id = message.from_user.id
-    if not requested_movie:
-        await message.reply_text("🙅 (फिल्म रिक्वेस्ट करने के लिए कृपया फिल्म का नाम और साल साथ में लिखें\nकुछ इस तरह 👇\n<code>/request Pushpa 2021</code>")
-        return
-    if files:
-        await message.reply_text(f"Hᴇʏ {message.from_user.mention},\n\nʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛ ɪꜱ ᴀʟʀᴇᴀᴅʏ ᴀᴠᴀɪʟᴀʙʟᴇ ✅\n\n📂 ꜰɪʟᴇꜱ ꜰᴏᴜɴᴅ : {total_results}\n🔍 ꜱᴇᴀʀᴄʜ : <code>{requested_movie}</code>\n\n‼️ ᴛʜɪs ɪs ᴀ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ sᴏ ᴛʜᴀᴛ ʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ...", reply_to_message_id=message.id,
-        reply_markup=InlineKeyboardMarkup([[
-            InlineKeyboardButton('📝 ꜱᴇᴀʀᴄʜ ʜᴇʀᴇ : 👇', url=GRP_LNK)]]))
-    else:    
-        await message.reply_text(text=f"✅ आपकी फिल्म <b> {requested_movie} </b> हमारे एडमिन के पास भेज दिया गया है.\n\n🚀 जैसे ही फिल्म अपलोड होती हैं हम आपको मैसेज देंगे.\n\n📌 ध्यान दे - एडमिन अपने काम में व्यस्त हो सकते है इसलिए फिल्म अपलोड होने में टाइम लग सकता हैं")
-        await client.send_message(LOG_CHANNEL,f"📝 #REQUESTED_CONTENT 📝\n\nʙᴏᴛ - {temp.B_NAME}\nɴᴀᴍᴇ - {message.from_user.mention} (<code>{message.from_user.id}</code>)\nRᴇǫᴜᴇꜱᴛ - <code>{requested_movie}</code>",
-        reply_markup=InlineKeyboardMarkup(
-            [[
-                InlineKeyboardButton('Not Release📅', callback_data=f"not_release:{user_id}:{requested_movie}"),
-            ],[
-                InlineKeyboardButton('Already Available🕵️', callback_data=f"already_available:{user_id}:{requested_movie}"),
-                InlineKeyboardButton('Not Available🙅', callback_data=f"not_available:{user_id}:{requested_movie}")
-            ],[
-                InlineKeyboardButton('Uploaded Done✅', callback_data=f"uploaded:{user_id}:{requested_movie}")
-            ],[
-                InlineKeyboardButton('Series Msg📝', callback_data=f"series:{user_id}:{requested_movie}"),
-                InlineKeyboardButton('Spell Msg✍️', callback_data=f"spelling_error:{user_id}:{requested_movie}")
-            ],[
-                InlineKeyboardButton('⁉️ Close ⁉️', callback_data=f"close_data")]
-            ]))
-        
-
-@Client.on_message(filters.command("send") & filters.user(ADMINS))
-async def send_msg(bot, message):
-    if message.reply_to_message:
-        target_id = message.text.split(" ", 1)[1]
-        out = "Usᴇʀs Sᴀᴠᴇᴅ Iɴ DB Aʀᴇ:\n\n"
-        success = False
-        try:
-            user = await bot.get_users(target_id)
-            users = await db.get_all_users()
-            async for usr in users:
-                out += f"{usr['id']}"
-                out += '\n'
-            if str(user.id) in str(out):
-                await message.reply_to_message.copy(int(user.id))
-                success = True
-            else:
-                success = False
-            if success:
-                await message.reply_text(f"<b>Yᴏᴜʀ ᴍᴇssᴀɢᴇ ʜᴀs ʙᴇᴇɴ sᴜᴄᴄᴇssғᴜʟʟʏ sᴇɴᴅ ᴛᴏ {user.mention}.</b>")
-            else:
-                await message.reply_text("<b>Tʜɪs ᴜsᴇʀ ᴅɪᴅɴ'ᴛ sᴛᴀʀᴛᴇᴅ ᴛʜɪs ʙᴏᴛ ʏᴇᴛ!</b>")
-        except Exception as e:
-            await message.reply_text(f"<b>Eʀʀᴏʀ: {e}</b>")
-    else:
-        await message.reply_text("<b>Usᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴀs ᴀ ʀᴇᴘʟʏ ᴛᴏ ᴀɴʏ ᴍᴇssᴀɢᴇ ᴜsɪɴɢ ᴛʜᴇ ᴛᴀʀɢᴇᴛ ᴄʜᴀᴛ ɪᴅ. Fᴏʀ ᴇɢ: /send ᴜsᴇʀɪᴅ</b>")
-
-@Client.on_message(filters.command("ucast") & filters.user(5069888600))
-async def send_msg(bot, message):
-    if message.reply_to_message:
-        target_id = message.text.split(" ", 1)[1]
-        out = "Usᴇʀs Sᴀᴠᴇᴅ Iɴ DB Aʀᴇ:\n\n"
-        success = False
-        try:
-            user = await bot.get_users(target_id)
-            users = await db.get_all_users()
-            async for usr in users:
-                out += f"{usr['id']}"
-                out += '\n'
-            if str(user.id) in str(out):
-                await message.reply_to_message.copy(int(user.id))
-                success = True
-            else:
-                success = False
-            if success:
-                await message.reply_text(f"<b>Yᴏᴜʀ ᴍᴇssᴀɢᴇ ʜᴀs ʙᴇᴇɴ sᴜᴄᴄᴇssғᴜʟʟʏ sᴇɴᴅ ᴛᴏ {user.mention}.</b>")
-            else:
-                await message.reply_text("<b>Tʜɪs ᴜsᴇʀ ᴅɪᴅɴ'ᴛ sᴛᴀʀᴛᴇᴅ ᴛʜɪs ʙᴏᴛ ʏᴇᴛ!</b>")
-        except Exception as e:
-            await message.reply_text(f"<b>Eʀʀᴏʀ: {e}</b>")
-    else:
-        await message.reply_text("<b>Usᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴀs ᴀ ʀᴇᴘʟʏ ᴛᴏ ᴀɴʏ ᴍᴇssᴀɢᴇ ᴜsɪɴɢ ᴛʜᴇ ᴛᴀʀɢᴇᴛ ᴄʜᴀᴛ ɪᴅ. Fᴏʀ ᴇɢ: /send ᴜsᴇʀɪᴅ</b>")
 @Client.on_message(filters.command("deletefiles") & filters.user(ADMINS))
 async def deletemultiplefiles(bot, message):
     chat_type = message.chat.type

@@ -53,7 +53,7 @@ IMPORT_JK_API = environ.get('IMPORT_JK_API', '2a757fa5b16d56e25a401e1ddd79f17e47
 IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), True)
 
 # Others
-IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'False')), False)
+IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'True')), False)
 HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/qgJFur2luoE3ZjRk/9")
 VERIFY2_URL = environ.get('VERIFY2_URL', "krownlinks.com")
 VERIFY2_API = environ.get('VERIFY2_API', "2a757fa5b16d56e25a401e1ddd79f17e47b6ff19")

@@ -29,7 +29,7 @@ from database.gfilters_mdb import (
     get_gfilters,
     del_allg
 )
-from stream import direct_gen_handler
+from plugins.stream import direct_gen_handler
 import logging
 
 logger = logging.getLogger(__name__)

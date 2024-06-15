@@ -96,6 +96,8 @@ PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
 
 # Streaming
+FILE_TO_LINK_LOG = environ.get("FILE_TO_LINK_LOG", "-1001991880018")
+FILE_TO_LINK_APPURL = environ.get("FILE_TO_LINK_APPURL", "https://cryptic-temple-92374-1133ffc4177c.herokuapp.com")
 BIN_CHANNEL = environ.get("BIN_CHANNEL", "-1002146432822")
 if len(BIN_CHANNEL) == 0:
     logging.error('BIN_CHANNEL is missing, exiting now')

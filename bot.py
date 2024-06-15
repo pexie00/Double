@@ -12,7 +12,7 @@ from pyrogram import Client, __version__
 from pyrogram.raw.all import layer
 from database.ia_filterdb import Media
 from database.users_chats_db import db
-from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR, LOG_CHANNEL, PORT, BIN_CHANNEL
+from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR, LOG_CHANNEL, PORT
 from typing import Union, Optional, AsyncGenerator
 from pyrogram import types
 from Script import script 
@@ -62,13 +62,7 @@ class Bot(Client):
         now = datetime.now(tz)
         time = now.strftime("%H:%M:%S %p")
         await self.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_TXT.format(today, time))
-        try:
-            m = await self.send_message(chat_id=BIN_CHANNEL, text="Test")
-            await m.delete()
-        except:
-            logging.error("Make sure bot admin in BIN_CHANNEL, exiting now")
-            exit()
-
+        
     async def stop(self, *args):
         await super().stop()
         logging.info("Bot stopped. Bye.")

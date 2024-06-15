@@ -294,7 +294,7 @@ async def start(client, message):
                 reply_markup=InlineKeyboardMarkup(
                     [
                      [
-                      InlineKeyboardButton("Start Streeming bot", url="t.me/filestreamerv22_bot?start=true")
+                      InlineKeyboardButton("ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 👀 / ꜰᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ 🗂️", callback_data="stream_button")
               
                    ]
                     ]
@@ -347,7 +347,7 @@ async def start(client, message):
         reply_markup=InlineKeyboardMarkup(
             [
              [
-             InlineKeyboardButton("Start Streeming bot", url="t.me/filestreamerv22_bot?start=true")
+             InlineKeyboardButton("ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 👀 / ꜰᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ 🗂️", callback_data="stream_button")
               
            ],
             ]

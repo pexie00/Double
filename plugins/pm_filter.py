@@ -29,6 +29,7 @@ from database.gfilters_mdb import (
     get_gfilters,
     del_allg
 )
+from stream import direct_gen_handler
 import logging
 
 logger = logging.getLogger(__name__)
@@ -690,6 +691,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
     data = query.data
     if query.data == "close_data":
         await query.message.delete()
+
+    elif query.data == "stream_button":
+        markup = await direct_gen_handler(query.message)
+        if markup:
+            await query.message.edit_reply_markup(markup)           
+        return            
+        
     elif query.data == "gfiltersdeleteallconfirm":
         await del_allg(query.message, 'gfilters')
         await query.answer("Dᴏɴᴇ !")

@@ -144,7 +144,7 @@ Nᴀᴍᴇ - {}"""
 ★ Message <code>{}</code>"""
     
     CAPTION = """
-<b>📂 Fɪʟᴇ ɴᴀᴍᴇ : </b><a href="https://t.me/hdlinks4uu">{file_name}</a>\n\nOur Backup : @HDLinks4uu<b>
+<b>📂 Fɪʟᴇ ɴᴀᴍᴇ : </b><a href="https://t.me/hdlinks4uu">{file_name}</a>\n\nOur Backup : @HDLinks4uu\nPvt group : https://t.me/+sAXur7a1tQQ1ODI8<b>
 </b>"""
 
     IMDB_TEMPLATE_TXT = """

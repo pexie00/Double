@@ -249,7 +249,7 @@ async def start(client, message):
                 ]]
                 await verify_user(client, userid, token)
                 await message.reply_photo(
-                    photo="https://telegra.ph/file/744b25135bc8b45bad4b4.jpg",
+                    photo="https://telegra.ph/file/e5a72c75e349ebba4b35f.jpg",
                     caption=f"<b>ʜᴇʏ {message.from_user.mention},\n ʏᴏᴜ ᴀʀᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴠᴇʀɪғɪᴇᴅ ! \n ɴᴏᴡ ʏᴏᴜ ʜᴀᴠᴇ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇss ғᴏʀ ᴀʟʟ ᴍᴏᴠɪᴇs for 24 hours 🚀\n Now click on the below butn to get your file direct 👇👇👇</b>",
                     reply_markup=InlineKeyboardMarkup(btn)
                 )
@@ -260,7 +260,7 @@ async def start(client, message):
                 InlineKeyboardButton("Get File You requested before..! by clicking on me🚀😊", url=f"https://telegram.me/{temp.U_NAME}?start=files_{fileid}")
             ]]              
             await message.reply_photo(
-                photo="https://telegra.ph/file/744b25135bc8b45bad4b4.jpg",
+                photo="https://telegra.ph/file/e5a72c75e349ebba4b35f.jpg",
                 caption=f"<b>ʜᴇʏ {message.from_user.mention}, \n ʏᴏᴜ ᴀʀᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴠᴇʀɪғɪᴇᴅ ! \nɴᴏᴡ ʏᴏᴜ ʜᴀᴠᴇ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇss ғᴏʀ ᴀʟʟ ᴍᴏᴠɪᴇs for 24 hours 🚀\n\n Now click on the below butn to get your file direct 👇👇👇 </b>",
                 reply_markup=InlineKeyboardMarkup(btn)
             )
@@ -282,7 +282,7 @@ async def start(client, message):
                     InlineKeyboardButton("⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️", url=HOW_TO_VERIFY)
                 ]]
                 await message.reply_photo(
-                    photo="https://telegra.ph/file/744b25135bc8b45bad4b4.jpg",
+                    photo="https://telegra.ph/file/e5a72c75e349ebba4b35f.jpg",
                     caption=f"<b>ʜᴇʟʟᴏ {message.from_user.mention}, ʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for 24 hours 🚀\n\n click on the ♻️ Vᴇʀɪғʏ ♻️ butn to get files\nclicl on the ⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️ if you face problem in verification</b>",
                     reply_markup=InlineKeyboardMarkup(btn)
                 )
@@ -334,7 +334,7 @@ async def start(client, message):
             InlineKeyboardButton("⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️", url=HOW_TO_VERIFY)
         ]]
         await message.reply_photo(
-            photo="https://telegra.ph/file/744b25135bc8b45bad4b4.jpg",
+            photo="https://telegra.ph/file/e5a72c75e349ebba4b35f.jpg",
             caption=f"<b>ʜᴇʟʟᴏ {message.from_user.mention},\nʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for 24 hours 🚀\n\n click on the ♻️ Vᴇʀɪғʏ ♻️ butn to get verified\nclick on the ⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️ if you face problem in verification</b>",
             reply_markup=InlineKeyboardMarkup(btn)
         )

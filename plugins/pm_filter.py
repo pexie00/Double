@@ -72,7 +72,6 @@ async def stream_download(bot, query):
                 ],[
                     InlineKeyboardButton('Update letest content', url='https://t.me/hdlinks4uu')]]))
                         
-@Client.on_message(filters.group | filters.private & filters.text & filters.incoming)
 async def grp_filter(client, message):
     await message.react(emoji=random.choice(REACTIONS))
     if message.chat.id != SUPPORT_CHAT_ID:
@@ -101,7 +100,7 @@ async def grp_filter(client, message):
                 parse_mode=enums.ParseMode.HTML
             )
 
-@Client.on_message(filters.group | filters.private & filters.text & filters.incoming)
+@Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_text(bot, message):
     content = message.text
     user = message.from_user.first_name
@@ -113,6 +112,7 @@ async def pm_text(bot, message):
         chat_id=LOG_CHANNEL,
         text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"
     )
+
 
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):

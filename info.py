@@ -59,7 +59,7 @@ VERIFY2_URL = environ.get('VERIFY2_URL', "yamlinks.com")
 VERIFY2_API = environ.get('VERIFY2_API', "c874c4713e72bd5c5fcb3cc5e1663a0cd6b2a713")
 
 # 👇==============this doesn't work===============👇
-SHORTLINK_URL = environ.get('SHORTLINK_URL', 'gyanilinks.com')
+SHORTLINK_URL = environ.get('SHORTLINK_URL', 'yamlinks.com')
 SHORTLINK_API = environ.get('SHORTLINK_API', 'c874c4713e72bd5c5fcb3cc5e1663a0cd6b2a713')
 # ☝️==============don't remove this===============☝️
 

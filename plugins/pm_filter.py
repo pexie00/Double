@@ -72,45 +72,47 @@ async def stream_download(bot, query):
                 ],[
                     InlineKeyboardButton('Update letest content', url='https://t.me/hdlinks4uu')]]))
                         
-@Client.on_message(filters.text & filters.incoming)
-async def give_filter(client, message):
-    if PM_FILTER is True:
-        if message.chat.id != SUPPORT_CHAT_ID:
-            glob = await global_filters(client, message)
-            if glob == False:
-                manual = await manual_filters(client, message)
-                if manual == False:
+@Client.on_message(filters.group & filters.text & filters.incoming)
+async def grp_filter(client, message):
+    await message.react(emoji=random.choice(REACTIONS))
+    if message.chat.id != SUPPORT_CHAT_ID:
+        glob = await global_filters(client, message)
+        if glob == False:
+            manual = await manual_filters(client, message)
+            if manual == False:
+                settings = await get_settings(message.chat.id)
+                try:
+                    if settings['auto_ffilter']:
+                        await auto_filter(client, message)
+                except KeyError:
+                    grpid = await active_connection(str(message.from_user.id))
+                    await save_group_settings(grpid, 'auto_ffilter', True)
                     settings = await get_settings(message.chat.id)
-                    try:
-                        if settings['auto_ffilter']:
-                            await auto_filter(client, message)
-                    except KeyError:
-                        grpid = await active_connection(str(message.from_user.id))
-                        await save_group_settings(grpid, 'auto_ffilter', True)
-                        settings = await get_settings(message.chat.id)
-                        if settings['auto_ffilter']:
-                            await auto_filter(client, message)
-        else: #a better logic to avoid repeated lines of code in auto_filter function
-            search = message.text
-            temp_files, temp_offset, total_results = await get_search_results(chat_id=message.chat.id, query=search.lower(), offset=0, filter=True)
-            if total_results == 0:
-                return
-            else:
-                return await message.reply_text(
-                    text=f"<b>Hᴇʏ {message.from_user.mention}, {str(total_results)} ʀᴇsᴜʟᴛs ᴀʀᴇ ғᴏᴜɴᴅ ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ ғᴏʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {search}. Kɪɴᴅʟʏ ᴜsᴇ ɪɴʟɪɴᴇ sᴇᴀʀᴄʜ ᴏʀ ᴍᴀᴋᴇ ᴀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴀᴅᴅ ᴍᴇ ᴀs ᴀᴅᴍɪɴ ᴛᴏ ɢᴇᴛ ᴍᴏᴠɪᴇ ғɪʟᴇs. Tʜɪs ɪs ᴀ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ sᴏ ᴛʜᴀᴛ ʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ..</b>",
-                    parse_mode=enums.ParseMode.HTML
-                )
-    else:
-        content = message.text
-        user = message.from_user.mention
-        user_id = message.from_user.id
-        if content.startswith("/") or content.startswith("#"): return  # ignore commands and hashtags
-        if user_id in ADMINS: return # ignore admins
-        await message.reply_text("<b>Yᴏᴜ ᴡᴏɴ'ᴛ ɢᴇᴛ ᴍᴏᴠɪᴇꜱ ʜᴇʀᴇ, ʏᴏᴜ'ʟʟ ʜᴀᴠᴇ ᴛᴏ ᴀꜱᴋ ғᴏʀ ᴛʜᴇᴍ ɪɴ ᴀ ɢʀᴏᴜᴘGo to https://t.me/+uKep8390U_1kMjg0 and send there.</b>")
-        await client.send_message(
-            chat_id=LOG_CHANNEL,
-            text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"
-        )
+                    if settings['auto_ffilter']:
+                        await auto_filter(client, message)
+    else: #a better logic to avoid repeated lines of code in auto_filter function
+        search = message.text
+        temp_files, temp_offset, total_results = await get_search_results(chat_id=message.chat.id, query=search.lower(), offset=0, filter=True)
+        if total_results == 0:
+            return
+        else:
+            return await message.reply_text(
+                text=f"<b>Hᴇʏ {message.from_user.mention}, {str(total_results)} ʀᴇsᴜʟᴛs ᴀʀᴇ ғᴏᴜɴᴅ ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ ғᴏʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {search}. Kɪɴᴅʟʏ ᴜsᴇ ɪɴʟɪɴᴇ sᴇᴀʀᴄʜ ᴏʀ ᴍᴀᴋᴇ ᴀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴀᴅᴅ ᴍᴇ ᴀs ᴀᴅᴍɪɴ ᴛᴏ ɢᴇᴛ ᴍᴏᴠɪᴇ ғɪʟᴇs. Tʜɪs ɪs ᴀ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ sᴏ ᴛʜᴀᴛ ʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ..</b>",
+                parse_mode=enums.ParseMode.HTML
+            )
+
+@Client.on_message(filters.private & filters.text & filters.incoming)
+async def pm_text(bot, message):
+    content = message.text
+    user = message.from_user.first_name
+    user_id = message.from_user.id
+    if content.startswith("/") or content.startswith("#"): return  # ignore commands and hashtags
+    if user_id in ADMINS: return # ignore admins
+    await message.reply_text("<b>ए दोस्त यहां मूवी नही मिलेगा ग्रुप में मांगो\nGo and send here 👉, @https://t.me/+uKep8390U_1kMjg0</b>")
+    await bot.send_message(
+        chat_id=LOG_CHANNEL,
+        text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"
+    )
 
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):

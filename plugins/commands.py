@@ -24,23 +24,14 @@ BATCH_FILES = {}
 
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
+    m = message
+    user_id = m.from_user.id
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         wish = get_wish()
-        buttons = [[
-                    InlineKeyboardButton('⤬ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ⤬', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
-                ],[
-                    InlineKeyboardButton('• ᴄʜᴀɴɴᴇʟ •', url=CHNL_LNK),
-                    InlineKeyboardButton('• ɢʀᴏᴜᴘ •', url=GRP_LNK)
-                ],[
-                    InlineKeyboardButton('• ᴅᴍᴄᴀ •', url='https://telegra.ph/DMCA-REPORT-11-28'),
-                  ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply_photo(
-            photo=random.choice(PICS),
-            caption=script.START_TXT.format(get_wish(), message.from_user.mention),
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
+        aks=await message.reply_text(f"<b>🔥 ʏᴇs {wish},\nʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ??</b>")
+        await asyncio.sleep(15)
+        await aks.delete()
+        await m.delete()
         await asyncio.sleep(2) # 😢 https://github.com/EvamariaTG/EvaMaria/blob/master/plugins/p_ttishow.py#L17 😬 wait a bit, before checking.
         if not await db.get_chat(message.chat.id):
             total=await client.get_chat_members_count(message.chat.id)

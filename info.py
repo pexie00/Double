@@ -16,7 +16,7 @@ def is_enabled(value, default):
 SESSION = environ.get('SESSION', 'Media_search')
 API_ID = int(environ.get('API_ID', "21845036"))
 API_HASH = environ.get('API_HASH', "b9787357754c57417854ba8ca0d35129")
-BOT_TOKEN = environ.get('BOT_TOKEN', "6425780977:AAEzUacPkwCEVnrUgVulVZ5cmsTpKfs705M")
+BOT_TOKEN = environ.get('BOT_TOKEN', "7147529409:AAH1WFFhPgHHpKogllODD36Wdg83vmSsx2Y")
 TIMEZONE = environ.get("TIMEZONE", "Asia/Kolkata")
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
@@ -43,7 +43,7 @@ SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(
 NO_RESULTS_MSG = is_enabled((environ.get("NO_RESULTS_MSG", 'True')), False)
 
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://wikitop190:nothing@cluster0.bjrdwan.mongodb.net/?retryWrites=true&w=majority")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://VEGA:VEGA@cluster0.hgptsjm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_NAME = environ.get('DATABASE_NAME', "cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
@@ -55,7 +55,7 @@ IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), True)
 # Others
 IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'True')), False)
 HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/qgJFur2luoE3ZjRk/9")
-VERIFY2_URL = environ.get('VERIFY2_URL', "gyanilinks.com")
+VERIFY2_URL = environ.get('VERIFY2_URL', "yamlinks.com")
 VERIFY2_API = environ.get('VERIFY2_API', "c874c4713e72bd5c5fcb3cc5e1663a0cd6b2a713")
 
 # 👇==============this doesn't work===============👇
@@ -65,7 +65,7 @@ SHORTLINK_API = environ.get('SHORTLINK_API', 'c874c4713e72bd5c5fcb3cc5e1663a0cd6
 
 #stream link shortner
 STREAM_SITE = (environ.get('STREAM_SITE', 'krownlinks.com'))
-STREAM_API = (environ.get('STREAM_API', '2a757fa5b16d56e25a401e1ddd79f17e47b6ff19'))
+STREAM_API = (environ.get('STREAM_API', '699ea70a37ef6c61723a5ee8bbcbae89c14a8b13'))
 STREAMHTO = (environ.get('STREAMHTO', 'https://t.me/qgJFur2luoE3ZjRk'))
 STREAM_LINK_MODE = is_enabled((environ.get('STREAM_LINK_MODE', "False")), False)
 

@@ -96,7 +96,7 @@ PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
 
 # Streaming
-FILE_TO_LINK_LOG = environ.get("FILE_TO_LINK_LOG", "-1002143964514")
+FILE_TO_LINK_LOG = environ.get("FILE_TO_LINK_LOG", "-1002119311683")
 FILE_TO_LINK_APPURL = environ.get("FILE_TO_LINK_APPURL", "https://filestreampro.onrender.com")
 
 BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))

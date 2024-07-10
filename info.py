@@ -50,10 +50,10 @@ COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 #this shortlink working
 IMPORT_JK_SITE = environ.get('IMPORT_JK_SITE', 'krownlinks.com')
 IMPORT_JK_API = environ.get('IMPORT_JK_API', '2a757fa5b16d56e25a401e1ddd79f17e47b6ff19')
-IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), True)
+IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), False)
 
 # Others
-IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'True')), False)
+IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'True')), True)
 HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/qgJFur2luoE3ZjRk/9")
 VERIFY2_URL = environ.get('VERIFY2_URL', "krownlinks.com")
 VERIFY2_API = environ.get('VERIFY2_API', "2a757fa5b16d56e25a401e1ddd79f17e47b6ff19")
@@ -65,7 +65,7 @@ SHORTLINK_API = environ.get('SHORTLINK_API', '2a757fa5b16d56e25a401e1ddd79f17e47
 
 #stream link shortner
 STREAM_SITE = (environ.get('STREAM_SITE', 'krownlinks.com'))
-STREAM_API = (environ.get('STREAM_API', '2a757fa5b16d56e25a401e1ddd79f17e47b6ff19'))
+STREAM_API = (environ.get('STREAM_API', '699ea70a37ef6c61723a5ee8bbcbae89c14a8b13'))
 STREAMHTO = (environ.get('STREAMHTO', 'https://t.me/qgJFur2luoE3ZjRk'))
 STREAM_LINK_MODE = is_enabled((environ.get('STREAM_LINK_MODE', "False")), False)
 

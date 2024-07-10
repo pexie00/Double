@@ -1,4 +1,4 @@
-git+https://github.com/KurimuzonAkuma/pyrogram
+pyrofork
 umongo
 tgcrypto
 pymongo[srv]==3.12.3
@@ -17,8 +17,8 @@ PyLeaves==1.0.2
 cinemagoer
 shortzy
 aiofiles
-pyromod==1.5
-
+fuzzywuzzy
+python-Levenshtein
 telegraph
 openai
 flask==2.2.2

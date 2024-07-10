@@ -31,7 +31,7 @@ from database.gfilters_mdb import (
 )
 from plugins.stream import direct_gen_handler
 import logging
-from fuzzywuzzy import process
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)

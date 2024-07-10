@@ -19,7 +19,7 @@ from Script import script
 from datetime import date, datetime 
 import pytz
 
-import pyromod.listen
+
 import time, os
 from jk_dev import web_server
 from utils import temp

@@ -19,6 +19,7 @@ API_HASH = environ.get('API_HASH', "b9787357754c57417854ba8ca0d35129")
 BOT_TOKEN = environ.get('BOT_TOKEN', "6425780977:AAEzUacPkwCEVnrUgVulVZ5cmsTpKfs705M")
 TIMEZONE = environ.get("TIMEZONE", "Asia/Kolkata")
 # Bot settings
+MULTI_CLIENT = False
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = is_enabled((environ.get('USE_CAPTION_FILTER', 'True')), True)
 

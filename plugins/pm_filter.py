@@ -252,9 +252,6 @@ async def next_page(bot, query):
         InlineKeyboardButton("Qᴜᴀʟɪᴛʏꜱ", callback_data=f"lusi_films#{req}"),
         InlineKeyboardButton("Sᴇᴀꜱᴏɴꜱ", callback_data=f"jk_dev#{req}")
     ])
-    btn.insert(0, [
-        InlineKeyboardButton("𝗦𝗲𝗻𝗱 𝗔𝗹𝗹 𝗙𝗶𝗹𝗲𝘀", callback_data=f"send_fall#files#{offset}#{req}"),
-    ])
     try:
         await query.message.edit_text(text=cap + files_link, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
     except MessageNotModified:
@@ -1810,10 +1807,6 @@ async def auto_filter(client, msg, spoll=False):
         InlineKeyboardButton("Lᴀɴɢᴜᴀɢᴇs", callback_data=f"select_lang#{message.from_user.id}"),
         InlineKeyboardButton("Qᴜᴀʟɪᴛʏꜱ", callback_data=f"lusi_films#{message.from_user.id}"),
         InlineKeyboardButton("Sᴇᴀꜱᴏɴꜱ", callback_data=f"jk_dev#{message.from_user.id}")
-    ])
-
-    btn.insert(0, [
-        InlineKeyboardButton("𝗦𝗲𝗻𝗱 𝗔𝗹𝗹 𝗙𝗶𝗹𝗲𝘀", callback_data=f"send_fall#{pre}#{0}#{message.from_user.id}"),
     ])
 
     if offset != "":

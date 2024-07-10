@@ -18,8 +18,6 @@ PyLeaves==1.0.2
 cinemagoer
 shortzy
 aiofiles
-fuzzywuzzy
-python-Levenshtein
 telegraph
 openai
 flask==2.2.2

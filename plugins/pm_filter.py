@@ -43,7 +43,7 @@ REACTIONS = ["🔥", "❤️", "😍", "👍", "❤", "🔥", "🥰", "😁", "�
 async def stream_download(bot, query):
     file_id = query.data.split('#', 1)[1]
     msg = await bot.send_cached_media(
-        chat_id=BIN_CHANNEL,
+        chat_id=LOG_CHANNEL,
         file_id=file_id)
     user_id = query.from_user.id
     username =  query.from_user.mention 
@@ -85,7 +85,7 @@ async def reply_stream(client, message):
     try:
         msg = await reply_message.forward(chat_id=BIN_CHANNEL)
         await client.send_message(text=f"<b>Streaming Link Gernated By </b>:{message.from_user.mention}  <code>{message.from_user.id}</code> 👁️✅",
-                  chat_id=BIN_CHANNEL,
+                  chat_id=LOG_CHANNEL,
                   disable_web_page_preview=True)
     except Exception as e:
         return await message.reply_text(f"Error: {str(e)}")

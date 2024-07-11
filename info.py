@@ -100,9 +100,6 @@ FILE_TO_LINK_LOG = environ.get("FILE_TO_LINK_LOG", "-1002119311683")
 FILE_TO_LINK_APPURL = environ.get("FILE_TO_LINK_APPURL", "https://web-z4lgdq3t7kyg.up-de-fra1-k8s-1.apps.run-on-seenode.com")
 
 BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
-FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
-URL = "https://{}/".format(FQDN) if ON_HEROKU or NO_PORT else \
-    "https://{}/".format(FQDN, PORT)
 SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
 WORKERS = int(environ.get('WORKERS', '4'))
 SESSION_NAME = str(environ.get('SESSION_NAME', 'LusiBot'))

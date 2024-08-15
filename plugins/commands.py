@@ -239,10 +239,12 @@ async def start(client, message):
                     caption=f"<b>ʜᴇʏ {message.from_user.mention},\n ʏᴏᴜ ᴀʀᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴠᴇʀɪғɪᴇᴅ ! \n ɴᴏᴡ ʏᴏᴜ ʜᴀᴠᴇ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇss ғᴏʀ ᴀʟʟ ᴍᴏᴠɪᴇs for 30 hours 🚀\n Now click on the below butn to get your file direct 👇👇👇</b>",
                     reply_markup=InlineKeyboardMarkup(btn)
                 )
-                return                
+                return
+            v_count = await db.set_verify_count(message.from_user.id)                
+            await client.send_message(LOG_CHANNEL , f"<b>{message.from_user.mention()} is verified 😗\nUser id : {message.from_user.id}\nTotal verified toady <code>{v_count}</code>\n\nRadhe Radhe 😉</b>")
             btn = [[
                 InlineKeyboardButton("Get File You requested before..! by clicking on me🚀😊", url=f"https://telegram.me/{temp.U_NAME}?start=files_{fileid}")
-            ]]              
+            ]]             
             await message.reply_photo(
                 photo="https://telegra.ph/file/e5a72c75e349ebba4b35f.jpg",
                 caption=f"<b>ʜᴇʏ {message.from_user.mention}, \n ʏᴏᴜ ᴀʀᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴠᴇʀɪғɪᴇᴅ ! \nɴᴏᴡ ʏᴏᴜ ʜᴀᴠᴇ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇss ғᴏʀ ᴀʟʟ ᴍᴏᴠɪᴇs for 30 hours 🚀\n\n Now click on the below butn to get your file direct 👇👇👇 </b>",

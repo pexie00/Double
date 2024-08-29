@@ -155,7 +155,7 @@ Nᴀᴍᴇ - {}"""
 ★ Message <code>{}</code>"""
     
     CAPTION = """
-<b>📂 Fɪʟᴇ ɴᴀᴍᴇ : </b><a href="https://t.me/hdlinks4uu">{file_name}</a>\n\nMust join this Pvt group : https://t.me/+sAXur7a1tQQ1ODI8<b>
+<b>📂 Fɪʟᴇ ɴᴀᴍᴇ : </b><a href="https://t.me/hdlinks4uu">{file_name}</a>\n\nMust join Whatsapp Chanel :  <a href='https://whatsapp.com/channel/0029VaOsXfxEFeXgEcmXwA1L'>Click on me to Join</a><b>
 </b>"""
 
     IMDB_TEMPLATE_TXT = """

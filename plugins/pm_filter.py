@@ -132,14 +132,30 @@ async def grp_filter(client, message):
                 parse_mode=enums.ParseMode.HTML
             )
 
+async def getInviteLinkIfInGroup(bot : Client, user_id):
+    if not GROUPS: return None
+    for group in GROUPS:
+        try:
+            await bot.get_chat_member(group, user_id)
+            invite_link = await bot.export_chat_invite_link(group)
+            return invite_link
+        except:
+            pass
+    return None
+
 @Client.on_message(filters.private & filters.text & filters.incoming)
-async def pm_text(bot, message):
+async def pm_text(bot, message : Message):
     content = message.text
     user = message.from_user.first_name
     user_id = message.from_user.id
     if content.startswith("/") or content.startswith("#"): return  # ignore commands and hashtags
     if user_id in ADMINS: return # ignore admins
-    await message.reply_text("<b>ए दोस्त यहां मूवी नही मिलेगा ग्रुप में मांगो\nGo to https://t.me/+9WtUhkyUOphiODA8 and send there.</b>")
+    link = await getInviteLinkIfInGroup(bot , user_id=user_id)
+    msg = '<b>You are present in our group\nJoin To Get file 👇🏻</b>' if link else "<b>Please Join Our Group For Files 👇🏻</b>" 
+    link = link if link else 'https://t.me/+vbl7o23VWnpmNDg0'
+    btn = [[InlineKeyboardButton('Join' , url=link)]]
+    reply_markup = InlineKeyboardMarkup(btn)
+    await message.reply(text=msg , reply_markup=reply_markup)
     await bot.send_message(
         chat_id=LOG_CHANNEL,
         text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"

@@ -16,7 +16,7 @@ def is_enabled(value, default):
 SESSION = environ.get('SESSION', 'Media_search')
 API_ID = int(environ.get('API_ID', "21845036"))
 API_HASH = environ.get('API_HASH', "b9787357754c57417854ba8ca0d35129")
-BOT_TOKEN = environ.get('BOT_TOKEN', "7354428748:AAFM18S_OxFzKGuKMylqQ5wyT231vdVXMYQ")
+BOT_TOKEN = environ.get('BOT_TOKEN', "8180170825:AAGEPiWKDQB6zq9_gGk-zNnkUU7NPalqC1Y")
 TIMEZONE = environ.get("TIMEZONE", "Asia/Kolkata")
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
@@ -43,10 +43,10 @@ SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(
 NO_RESULTS_MSG = is_enabled((environ.get("NO_RESULTS_MSG", 'True')), False)
 
 # MongoDB information
-SECONDDB_URI = environ.get('SECONDDB_URI', "mongodb+srv://TWO:TWO@cluster0.utwbyel.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+SECONDDB_URI = environ.get('SECONDDB_URI', "mongodb+srv://HMK1:HMK1@cluster0.0so9e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://ONE:ONE@cluster0.z2ydlbm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'LATEST_CUMMINS')
 
 #this shortlink working
 IMPORT_JK_SITE = environ.get('IMPORT_JK_SITE', 'krownlinks.com')
@@ -54,7 +54,7 @@ IMPORT_JK_API = environ.get('IMPORT_JK_API', '2a757fa5b16d56e25a401e1ddd79f17e47
 IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), False)
 
 # Others
-IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'True')), True)
+IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'False')), True)
 HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/qgJFur2luoE3ZjRk/9")
 VERIFY2_URL = environ.get('VERIFY2_URL', "gyanilinks.com")
 VERIFY2_API = environ.get('VERIFY2_API', "c874c4713e72bd5c5fcb3cc5e1663a0cd6b2a713")

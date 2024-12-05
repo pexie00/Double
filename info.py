@@ -95,7 +95,7 @@ FILE_STORE_CHANNEL = [int(ch) for ch in (environ.get('FILE_STORE_CHANNEL', '')).
 MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "True")), True)
 PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
-GROUPS= [int(ch) for ch in (environ.get('GROUPS', '-1002472412322 -1002379112835 -1002283795870 -1002496518493 -1002210527372 -1002294908081')).split()]
+GROUPS= [int(ch) for ch in (environ.get('GROUPS', '-1002489665465 -1002379112835 -1002283795870 -1002496518493 -1002210527372 -1002294908081')).split()]
 
 # Streaming
 FILE_TO_LINK_LOG = environ.get("FILE_TO_LINK_LOG", "-1002119311683")

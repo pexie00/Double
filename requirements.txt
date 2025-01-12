@@ -6,7 +6,7 @@ motor
 marshmallow
 requests
 bs4
-git+https://github.com/Joelkb/cinemagoer
+cinemagoer
 datetime
 pytz
 aiohttp

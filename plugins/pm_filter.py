@@ -153,7 +153,7 @@ async def pm_text(bot, message : Message):
     if user_id in ADMINS: return # ignore admins
     link = await getInviteLinkIfInGroup(bot , user_id=user_id)
     msg = '<b>You are present in our group\nJoin To Get file 👇🏻</b>' if link else "<b>Please Join Our Group For Files 👇🏻</b>" 
-    link = link if link else 'https://t.me/+HH08JridjfdiYTU0'
+    link = link if link else 'https://t.me/+JtulIPzko5cyNWI0'
     btn = [[InlineKeyboardButton('Join' , url=link)]]
     reply_markup = InlineKeyboardMarkup(btn)
     await message.reply(text=msg , reply_markup=reply_markup)

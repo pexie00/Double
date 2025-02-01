@@ -99,7 +99,7 @@ GROUPS= [int(ch) for ch in (environ.get('GROUPS', '-1002489665465 -1002379112835
 
 # Streaming
 FILE_TO_LINK_LOG = environ.get("FILE_TO_LINK_LOG", "-1002119311683")
-FILE_TO_LINK_APPURL = environ.get("FILE_TO_LINK_APPURL", "https://web-z4lgdq3t7kyg.up-de-fra1-k8s-1.apps.run-on-seenode.com")
+FILE_TO_LINK_APPURL = environ.get("FILE_TO_LINK_APPURL", "https://failedteam-07901063cc55.herokuapp.com")
 
 BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
 SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))

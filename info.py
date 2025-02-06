@@ -49,8 +49,8 @@ DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'LATEST_CUMMINS')
 
 #this shortlink working
-IMPORT_JK_SITE = environ.get('IMPORT_JK_SITE', 'krownlinks.com')
-IMPORT_JK_API = environ.get('IMPORT_JK_API', '2a757fa5b16d56e25a401e1ddd79f17e47b6ff19')
+IMPORT_JK_SITE = environ.get('IMPORT_JK_SITE', 'instantlinks.co')
+IMPORT_JK_API = environ.get('IMPORT_JK_API', '0fcd9f8d3157e4229caeaaef225d6f2b759b2b9e')
 IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), False)
 
 # Others

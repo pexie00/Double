@@ -56,12 +56,12 @@ IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), False)
 # Others
 IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'True')), True)
 HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/qgJFur2luoE3ZjRk/9")
-VERIFY2_URL = environ.get('VERIFY2_URL', "krownlinks.com")
-VERIFY2_API = environ.get('VERIFY2_API', "2a757fa5b16d56e25a401e1ddd79f17e47b6ff19")
+VERIFY2_URL = environ.get('VERIFY2_URL', "instantlinks.co")
+VERIFY2_API = environ.get('VERIFY2_API', "0fcd9f8d3157e4229caeaaef225d6f2b759b2b9e")
 
 # 👇==============this doesn't work===============👇
-SHORTLINK_URL = environ.get('SHORTLINK_URL', 'krownlinks.com')
-SHORTLINK_API = environ.get('SHORTLINK_API', '2a757fa5b16d56e25a401e1ddd79f17e47b6ff19')
+SHORTLINK_URL = environ.get('SHORTLINK_URL', 'instantlinks.co')
+SHORTLINK_API = environ.get('SHORTLINK_API', '0fcd9f8d3157e4229caeaaef225d6f2b759b2b9e')
 # ☝️==============don't remove this===============☝️
 
 #stream link shortner

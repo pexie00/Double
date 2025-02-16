@@ -1947,7 +1947,7 @@ async def auto_filter(client, msg, spoll=False):
         )
     else:
         user = message.from_user.first_name
-        cap = f"<b> {user} Click to see results ✅</b>"
+        cap = f"<b> {user} Greetings, Here's your results ✅</b>"
     CAP[search] = cap
     if imdb and imdb.get('poster'):
         try:

@@ -267,7 +267,7 @@ async def start(client, message):
                     InlineKeyboardButton("♻️ Vᴇʀɪғʏ ♻️", url=await get_token(client, message.from_user.id, f"https://telegram.me/{temp.U_NAME}?start=", file_id)),
                     InlineKeyboardButton("⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️", url=HOW_TO_VERIFY)
                 ]]
-                await message.reply_photo(
+                await message.reply_video(
                     photo="https://envs.sh/iWc.mp4",
                     caption=f"<b>MUST WATCH VIDEO 👆🏿\nʜᴇʟʟᴏ {message.from_user.mention}, ʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for 30 hours 🚀\n\n click on the ♻️ Vᴇʀɪғʏ ♻️ butn to get files\nclicK on the ⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️ if you face problem in verification</b>",
                     reply_markup=InlineKeyboardMarkup(btn)
@@ -319,7 +319,7 @@ async def start(client, message):
             InlineKeyboardButton("♻️ Vᴇʀɪғʏ ♻️", url=await get_token(client, message.from_user.id, f"https://telegram.me/{temp.U_NAME}?start=", file_id)),
             InlineKeyboardButton("⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️", url=HOW_TO_VERIFY)
         ]]
-        await message.reply_photo(
+        await message.reply_video(
             photo="https://envs.sh/iWc.mp4",
             caption=f"<b>MUST WATCH VIDEO 👆🏿\nʜᴇʟʟᴏ {message.from_user.mention},\nʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for 30 hours 🚀\n\n click on the ♻️ Vᴇʀɪғʏ ♻️ butn to get verified\nclick on the ⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️ if you face problem in verification</b>",
             reply_markup=InlineKeyboardMarkup(btn)

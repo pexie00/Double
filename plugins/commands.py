@@ -266,9 +266,9 @@ async def start(client, message):
                 btn = [[
                     InlineKeyboardButton("♻️ Vᴇʀɪғʏ ♻️", url=await get_token(client, message.from_user.id, f"https://telegram.me/{temp.U_NAME}?start=", file_id))
                 ]]
-                await message.reply_video(
-                    video="https://envs.sh/iB3.mp4",
-                    caption=f"<b>MUST WATCH VIDEO 👆🏿\nʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for 30 hours 🚀\n\n click on the ♻️ Vᴇʀɪғʏ ♻️ butn to get verified\nWatch video ⚠️ if you face problem in verification</b>",
+                await message.reply_photo(
+                    photo="https://envs.sh/QuM.jpg",
+                    caption=f"<b>ʜᴇʟʟᴏ {message.from_user.mention}, ʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for 30 hours 🚀\n\n click on the ♻️ Vᴇʀɪғʏ ♻️ butn to get files\nclicl on the ⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️ if you face problem in verification</b>",
                     reply_markup=InlineKeyboardMarkup(btn)
                 )
                 return
@@ -316,10 +316,11 @@ async def start(client, message):
     if IS_VERIFY and not await check_verification(client, message.from_user.id):
         btn = [[
             InlineKeyboardButton("♻️ Vᴇʀɪғʏ ♻️", url=await get_token(client, message.from_user.id, f"https://telegram.me/{temp.U_NAME}?start=", file_id))
+            InlineKeyboardButton("⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️", url=HOW_TO_VERIFY)
         ]]
-        await message.reply_video(
-            video="https://envs.sh/iB3.mp4",
-            caption=f"<b>MUST WATCH VIDEO 👆🏿\nʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for 30 hours 🚀\n\n click on the ♻️ Vᴇʀɪғʏ ♻️ butn to get verified\nWatch video ⚠️ if you face problem in verification</b>",
+        await message.reply_photo(
+            photo="https://envs.sh/QuM.jpg",
+            caption=f"<b>ʜᴇʟʟᴏ {message.from_user.mention}, ʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for 30 hours 🚀\n\n click on the ♻️ Vᴇʀɪғʏ ♻️ butn to get files\nclicl on the ⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️ if you face problem in verification</b>",
             reply_markup=InlineKeyboardMarkup(btn)
         )
         return

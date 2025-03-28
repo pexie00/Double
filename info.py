@@ -55,7 +55,7 @@ IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), False)
 
 # Others
 IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'True')), True)
-HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/qgJFur2luoE3ZjRk/9")
+HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/+RTxO8vbWOQ41ZmU8")
 VERIFY2_URL = environ.get('VERIFY2_URL', "instantlinks.co")
 VERIFY2_API = environ.get('VERIFY2_API', "0fcd9f8d3157e4229caeaaef225d6f2b759b2b9e")
 
@@ -67,7 +67,7 @@ SHORTLINK_API = environ.get('SHORTLINK_API', '0fcd9f8d3157e4229caeaaef225d6f2b75
 #stream link shortner
 STREAM_SITE = (environ.get('STREAM_SITE', 'krownlinks.com'))
 STREAM_API = (environ.get('STREAM_API', '2a757fa5b16d56e25a401e1ddd79f17e47b6ff19'))
-STREAMHTO = (environ.get('STREAMHTO', 'https://t.me/qgJFur2luoE3ZjRk'))
+STREAMHTO = (environ.get('STREAMHTO', 'https://t.me/+RTxO8vbWOQ41ZmU8'))
 STREAM_LINK_MODE = is_enabled((environ.get('STREAM_LINK_MODE', "False")), False)
 
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '-1002036736520').split()]

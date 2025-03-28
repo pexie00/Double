@@ -14,9 +14,9 @@ def is_enabled(value, default):
 
 # Bot information
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ.get('API_ID', "21845036"))
-API_HASH = environ.get('API_HASH', "b9787357754c57417854ba8ca0d35129")
-BOT_TOKEN = environ.get('BOT_TOKEN', "8180170825:AAGEPiWKDQB6zq9_gGk-zNnkUU7NPalqC1Y")
+API_ID = int(environ.get('API_ID', ""))
+API_HASH = environ.get('API_HASH', "")
+BOT_TOKEN = environ.get('BOT_TOKEN', "")
 TIMEZONE = environ.get("TIMEZONE", "Asia/Kolkata")
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
@@ -43,10 +43,10 @@ SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(
 NO_RESULTS_MSG = is_enabled((environ.get("NO_RESULTS_MSG", 'True')), False)
 
 # MongoDB information
-SECONDDB_URI = environ.get('SECONDDB_URI', "mongodb+srv://HMK1:HMK1@cluster0.0so9e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://HMK2:HMK2@cluster0.d0gr4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+SECONDDB_URI = environ.get('SECONDDB_URI', "")
+DATABASE_URI = environ.get('DATABASE_URI', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'LATEST_CUMMINS')
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'LATEST')
 
 #this shortlink working
 IMPORT_JK_SITE = environ.get('IMPORT_JK_SITE', 'instantlinks.co')
@@ -67,15 +67,15 @@ SHORTLINK_API = environ.get('SHORTLINK_API', '0fcd9f8d3157e4229caeaaef225d6f2b75
 #stream link shortner
 STREAM_SITE = (environ.get('STREAM_SITE', 'krownlinks.com'))
 STREAM_API = (environ.get('STREAM_API', '2a757fa5b16d56e25a401e1ddd79f17e47b6ff19'))
-STREAMHTO = (environ.get('STREAMHTO', 'https://t.me/qgJFur2luoE3ZjRk'))
+STREAMHTO = (environ.get('STREAMHTO', ''))
 STREAM_LINK_MODE = is_enabled((environ.get('STREAM_LINK_MODE', "False")), False)
 
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '-1002036736520').split()]
 MAX_B_TN = environ.get("MAX_B_TN", "7")
 MAX_BTN = is_enabled((environ.get('MAX_BTN', "True")), True)
 PORT = environ.get("PORT", "8080")
-GRP_LNK = environ.get('GRP_LNK', 'https://t.me/hdlinks4uu')
-CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/hdlinks4uu')
+GRP_LNK = environ.get('GRP_LNK', '')
+CHNL_LNK = environ.get('CHNL_LNK', '')
 MSG_ALRT = environ.get('MSG_ALRT', 'Wʜᴀᴛ Aʀᴇ Yᴏᴜ Lᴏᴏᴋɪɴɢ Aᴛ ?')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', -1002119311683))
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '0')
@@ -98,8 +98,8 @@ PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
 GROUPS= [int(ch) for ch in (environ.get('GROUPS', '-1002489665465 -1002496518493 -1002283795870 -1002472412322 -1002210527372 -1002294908081')).split()]
 
 # Streaming
-FILE_TO_LINK_LOG = environ.get("FILE_TO_LINK_LOG", "-1002119311683")
-FILE_TO_LINK_APPURL = environ.get("FILE_TO_LINK_APPURL", "https://failedteam-07901063cc55.herokuapp.com")
+FILE_TO_LINK_LOG = environ.get("FILE_TO_LINK_LOG", "")
+FILE_TO_LINK_APPURL = environ.get("FILE_TO_LINK_APPURL", "")
 
 BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
 SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))

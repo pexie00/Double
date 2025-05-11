@@ -1,7 +1,7 @@
-Pyrofork==2.3.43
+Pyrogram
 umongo
 tgcrypto
-pymongo==3.12
+pymongo
 motor
 marshmallow
 requests

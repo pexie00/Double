@@ -3,7 +3,7 @@ umongo
 tgcrypto
 pymongo
 motor
-marshmallow
+marshmallow==3.26.1
 requests
 bs4
 cinemagoer

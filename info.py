@@ -55,7 +55,7 @@ IS_SHORTLINK = is_enabled((environ.get('IS_SHORTLINK', 'False')), False)
 
 # Others
 IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'True')), True)
-HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/+RTxO8vbWOQ41ZmU8")
+HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/+TnwXn61GbC8zYWNk")
 VERIFY2_URL = environ.get('VERIFY2_URL', "instantlinks.co")
 VERIFY2_API = environ.get('VERIFY2_API', "0fcd9f8d3157e4229caeaaef225d6f2b759b2b9e")
 

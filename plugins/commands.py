@@ -236,7 +236,7 @@ async def start(client, message):
                 await verify_user(client, userid, token)
                 await message.reply_photo(
                     photo="https://telegra.ph/file/e5a72c75e349ebba4b35f.jpg",
-                    caption=f"<b>ʜᴇʏ {message.from_user.mention},\n ʏᴏᴜ ᴀʀᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴠᴇʀɪғɪᴇᴅ ! \n ɴᴏᴡ ʏᴏᴜ ʜᴀᴠᴇ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇss ғᴏʀ ᴀʟʟ ᴍᴏᴠɪᴇs for 30 hours 🚀\n Now click on the below butn to get your file direct 👇👇👇</b>",
+                    caption=f"<b>ʜᴇʏ {message.from_user.mention},\n ʏᴏᴜ ᴀʀᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴠᴇʀɪғɪᴇᴅ ! \n ɴᴏᴡ ʏᴏᴜ ʜᴀᴠᴇ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇss ғᴏʀ ᴀʟʟ ᴍᴏᴠɪᴇs for 48 hours 🚀\n Now click on the below butn to get your file direct 👇👇👇\nVERIFICATION TIME: 48HR/2DAYZ</b>",
                     reply_markup=InlineKeyboardMarkup(btn)
                 )
                 return
@@ -247,7 +247,7 @@ async def start(client, message):
             ]]             
             await message.reply_photo(
                 photo="https://telegra.ph/file/e5a72c75e349ebba4b35f.jpg",
-                caption=f"<b>ʜᴇʏ {message.from_user.mention}, \n ʏᴏᴜ ᴀʀᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴠᴇʀɪғɪᴇᴅ ! \nɴᴏᴡ ʏᴏᴜ ʜᴀᴠᴇ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇss ғᴏʀ ᴀʟʟ ᴍᴏᴠɪᴇs for 30 hours 🚀\n\n Now click on the below butn to get your file direct 👇👇👇 </b>",
+                caption=f"<b>ʜᴇʏ {message.from_user.mention}, \n ʏᴏᴜ ᴀʀᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴠᴇʀɪғɪᴇᴅ ! \nɴᴏᴡ ʏᴏᴜ ʜᴀᴠᴇ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇss ғᴏʀ ᴀʟʟ ᴍᴏᴠɪᴇs for 48 hours 🚀\n\n Now click on the below butn to get your file direct 👇👇👇\nVERIFICATION TIME: 48HR/2DAYZ </b>",
                 reply_markup=InlineKeyboardMarkup(btn)
             )
             await verify_user(client, userid, token)
@@ -268,8 +268,8 @@ async def start(client, message):
                     InlineKeyboardButton("⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️", url=HOW_TO_VERIFY)
                 ]]
                 await message.reply_photo(
-                    photo="https://ibb.co/WWVKSyCC",
-                    caption=f"<b>ʜᴇʟʟᴏ {message.from_user.mention}, ʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for 30 hours 🚀\n\n click on the ♻️ Vᴇʀɪғʏ ♻️ butn to get files\nclicl on the ⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️ if you face problem in verification</b>",
+                    photo="https://ibb.co/yBNngtWY",
+                    caption=f"<b>ʜᴇʟʟᴏ {message.from_user.mention}, ʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for 48 hours 🚀\n\n click on the ♻️ Vᴇʀɪғʏ ♻️ butn to get files\nclicl on the ⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️ if you face problem in verification\nVERIFICATION TIME: 48HR/2DAYZ</b>",
                     reply_markup=InlineKeyboardMarkup(btn)
                 )
                 return
@@ -321,7 +321,7 @@ async def start(client, message):
         ]]
         await message.reply_photo(
             photo="https://ibb.co/WWVKSyCC",
-            caption=f"<b>ʜᴇʟʟᴏ {message.from_user.mention}, ʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for 30 hours 🚀\n\n click on the ♻️ Vᴇʀɪғʏ ♻️ butn to get files\nclicl on the ⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️ if you face problem in verification</b>",
+            caption=f"<b>ʜᴇʟʟᴏ {message.from_user.mention}, ʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for 48 hours 🚀\n\n click on the ♻️ Vᴇʀɪғʏ ♻️ butn to get files\nclicl on the ⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️ if you face problem in verification</b>",
             reply_markup=InlineKeyboardMarkup(btn)
         )
         return

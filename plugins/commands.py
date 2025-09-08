@@ -268,7 +268,7 @@ async def start(client, message):
                     InlineKeyboardButton("⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️", url=HOW_TO_VERIFY)
                 ]]
                 await message.reply_photo(
-                    photo="https://ibb.co/yBNngtWY",
+                    photo="https://ibb.co/tTfXHLWk",
                     caption=f"<b>ʜᴇʟʟᴏ {message.from_user.mention}, ʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for 48 hours 🚀\n\n click on the ♻️ Vᴇʀɪғʏ ♻️ butn to get files\nclicl on the ⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️ if you face problem in verification\nVERIFICATION TIME: 48HR/2DAYZ</b>",
                     reply_markup=InlineKeyboardMarkup(btn)
                 )
@@ -320,7 +320,7 @@ async def start(client, message):
             InlineKeyboardButton("⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️", url=HOW_TO_VERIFY)
         ]]
         await message.reply_photo(
-            photo="https://ibb.co/yBNngtWY",
+            photo="https://ibb.co/tTfXHLWk",
             caption=f"<b>ʜᴇʟʟᴏ {message.from_user.mention}, ʏᴏᴜʀ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ,ᴘʟᴇᴀꜱᴇ ᴠᴇʀɪғʏ ɴᴏᴡ ᴀɴᴅ ɢᴇᴛ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ғᴏʀ ɴᴇxᴛ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ for 48 hours 🚀\n\n click on the ♻️ Vᴇʀɪғʏ ♻️ butn to get files\nclicl on the ⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️ if you face problem in verification</b>",
             reply_markup=InlineKeyboardMarkup(btn)
         )

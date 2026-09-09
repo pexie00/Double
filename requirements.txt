@@ -11,7 +11,6 @@ datetime
 pytz
 aiohttp
 cinemagoer
-imdb
 shortzy
 telegraph
 PyLeaves

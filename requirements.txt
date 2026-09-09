@@ -1,4 +1,4 @@
-Pyrofork==2.3.43
+Pyrofork==2.3.69
 umongo
 tgcrypto
 pymongo
